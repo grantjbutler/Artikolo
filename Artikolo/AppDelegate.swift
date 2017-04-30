@@ -14,18 +14,18 @@ import Dip
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    let container = DependencyContainer { container in
-        container.register(.singleton) { DataManager(backend: CoreDataDataManagerBackend(containerName: "Artikolo")) }
-    }
+    var appCoordinator: AppCoordinator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let articleTableViewController = ArticleTableViewController(dataManager: try! container.resolve())
-        let navigationController = UINavigationController(rootViewController: articleTableViewController)
+        let navigationController = UINavigationController()
+        appCoordinator = AppCoordinator(navigationController: navigationController)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
+        
+        appCoordinator?.start()
+        
         window?.makeKeyAndVisible()
         
         return true
