@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C363B3A01EB6AC1300F7E98F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C363B39F1EB6AC1300F7E98F /* Coordinator.swift */; };
 		C3F7D85A1EB68AAD00A85568 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F7D8591EB68AAD00A85568 /* AppDelegate.swift */; };
 		C3F7D85C1EB68AAD00A85568 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F7D85B1EB68AAD00A85568 /* ViewController.swift */; };
 		C3F7D8621EB68AAD00A85568 /* Artikolo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3F7D8601EB68AAD00A85568 /* Artikolo.xcdatamodeld */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C363B39F1EB6AC1300F7E98F /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C3F7D8561EB68AAD00A85568 /* Artikolo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Artikolo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F7D8591EB68AAD00A85568 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3F7D85B1EB68AAD00A85568 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				C3F7D8591EB68AAD00A85568 /* AppDelegate.swift */,
+				C363B39F1EB6AC1300F7E98F /* Coordinator.swift */,
 				C3F7D85B1EB68AAD00A85568 /* ViewController.swift */,
 				C3F7D8901EB69BF800A85568 /* ArticleTableViewController.swift */,
 				C3F7D88C1EB690C100A85568 /* DataManager.swift */,
@@ -298,6 +301,7 @@
 				C3F7D8621EB68AAD00A85568 /* Artikolo.xcdatamodeld in Sources */,
 				C3F7D8911EB69BF800A85568 /* ArticleTableViewController.swift in Sources */,
 				C3F7D85A1EB68AAD00A85568 /* AppDelegate.swift in Sources */,
+				C363B3A01EB6AC1300F7E98F /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
