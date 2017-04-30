@@ -13,6 +13,9 @@ class AppCoordinator: Coordinator {
     
     override func start() {
         container.register(.singleton) { DataManager(backend: CoreDataDataManagerBackend(containerName: "Artikolo")) }
+        
+        let articleListCoordinator = ArticleListCoordinator(navigationController: navigationController, container: container)
+        addChild(articleListCoordinator)
     }
     
 }
