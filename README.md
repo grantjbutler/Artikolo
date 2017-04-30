@@ -1,3 +1,3 @@
-# Artikolo
+# Artikolo 📰
 
-An iOS Read it Later app.
+An iOS Read it [Soon](https://i.giphy.com/g5PgP4sr09vd6.gif) app.
