@@ -18,6 +18,7 @@
 		C3F7D88D1EB690C100A85568 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F7D88C1EB690C100A85568 /* DataManager.swift */; };
 		C3F7D88F1EB694FD00A85568 /* CoreDataDataManagerBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F7D88E1EB694FD00A85568 /* CoreDataDataManagerBackend.swift */; };
 		C3F7D8911EB69BF800A85568 /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F7D8901EB69BF800A85568 /* ArticleTableViewController.swift */; };
+		C3F7D89D1EB6A7E400A85568 /* Dip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F7D89C1EB6A7E400A85568 /* Dip.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		C3F7D88C1EB690C100A85568 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C3F7D88E1EB694FD00A85568 /* CoreDataDataManagerBackend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataDataManagerBackend.swift; sourceTree = "<group>"; };
 		C3F7D8901EB69BF800A85568 /* ArticleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
+		C3F7D89C1EB6A7E400A85568 /* Dip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dip.framework; path = Carthage/Build/iOS/Dip.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3F7D89D1EB6A7E400A85568 /* Dip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +117,7 @@
 				C3F7D8651EB68AAD00A85568 /* LaunchScreen.storyboard */,
 				C3F7D8681EB68AAD00A85568 /* Info.plist */,
 				C3F7D8601EB68AAD00A85568 /* Artikolo.xcdatamodeld */,
+				C3F7D89C1EB6A7E400A85568 /* Dip.framework */,
 			);
 			path = Artikolo;
 			sourceTree = "<group>";
@@ -147,6 +151,7 @@
 				C3F7D8521EB68AAD00A85568 /* Sources */,
 				C3F7D8531EB68AAD00A85568 /* Frameworks */,
 				C3F7D8541EB68AAD00A85568 /* Resources */,
+				C3F7D89E1EB6A7E800A85568 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -265,6 +270,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C3F7D89E1EB6A7E800A85568 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Dip.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C3F7D8521EB68AAD00A85568 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -349,6 +371,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -399,6 +422,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -409,6 +433,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -420,6 +445,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Artikolo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.grantjbutler.Artikolo;
@@ -432,6 +458,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Artikolo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.grantjbutler.Artikolo;
@@ -513,6 +540,7 @@
 				C3F7D8831EB68AAD00A85568 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C3F7D8841EB68AAD00A85568 /* Build configuration list for PBXNativeTarget "ArtikoloTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +549,7 @@
 				C3F7D8861EB68AAD00A85568 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C3F7D8871EB68AAD00A85568 /* Build configuration list for PBXNativeTarget "ArtikoloUITests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +558,7 @@
 				C3F7D8891EB68AAD00A85568 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
