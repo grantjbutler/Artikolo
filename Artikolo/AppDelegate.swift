@@ -16,7 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let dataManager = DataManager(backend: CoreDataDataManagerBackend(containerName: "Artikolo"))
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let articleTableViewController = ArticleTableViewController(style: .plain)
+        let navigationController = UINavigationController(rootViewController: articleTableViewController)
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
