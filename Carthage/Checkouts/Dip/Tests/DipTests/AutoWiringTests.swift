@@ -55,9 +55,7 @@ class AutoWiringTests: XCTestCase {
       ("testThatItCanResolveWithAutoWiring", testThatItCanResolveWithAutoWiring),
       ("testThatItUsesAutoWireFactoryWithMostNumberOfArguments", testThatItUsesAutoWireFactoryWithMostNumberOfArguments),
       ("testThatItThrowsAmbiguityErrorWhenUsingAutoWire", testThatItThrowsAmbiguityErrorWhenUsingAutoWire),
-      ("testThatItUsesAutoWireFactoryWithMostNumberOfArguments", testThatItUsesAutoWireFactoryWithMostNumberOfArguments),
-      ("testThatItPrefersTaggedFactoryWithDifferentNumberOfArgumentsWhenUsingAutoWire", testThatItPrefersTaggedFactoryWithDifferentNumberOfArgumentsWhenUsingAutoWire),
-      ("testThatItPrefersTaggedFactoryWithDifferentTypesOfArgumentsWhenUsingAutoWire", testThatItPrefersTaggedFactoryWithDifferentTypesOfArgumentsWhenUsingAutoWire),
+      ("testThatItFirstTriesToUseTaggedFactoriesWhenUsingAutoWire", testThatItFirstTriesToUseTaggedFactoriesWhenUsingAutoWire),
       ("testThatItFallbackToNotTaggedFactoryWhenUsingAutoWire", testThatItFallbackToNotTaggedFactoryWhenUsingAutoWire),
       ("testThatItDoesNotTryToUseAutoWiringWhenCallingResolveWithArguments", testThatItDoesNotTryToUseAutoWiringWhenCallingResolveWithArguments),
       ("testThatItDoesNotUseAutoWiringWhenFailedToResolveLowLevelDependency", testThatItDoesNotUseAutoWiringWhenFailedToResolveLowLevelDependency),
@@ -148,7 +146,7 @@ class AutoWiringTests: XCTestCase {
     }
   }
   
-  func testThatItPrefersTaggedFactoryWithDifferentNumberOfArgumentsWhenUsingAutoWire() {
+  func testThatItFirstTriesToUseTaggedFactoriesWhenUsingAutoWire() {
     //given
     
     //1 arg
@@ -176,31 +174,6 @@ class AutoWiringTests: XCTestCase {
     
     //then
     XCTAssertTrue(taggedFactoryWithMostNumberOfArgumentsCalled)
-  }
-  
-  func testThatItPrefersTaggedFactoryWithDifferentTypesOfArgumentsWhenUsingAutoWire() {
-    //given
-    
-    //1 arg
-    container.register { AutoWiredClientImp(service1: $0, service2: try self.container.resolve()) as AutoWiredClient }
-    
-    //2 args
-    container.register { AutoWiredClientImp(service1: $0, service2: $1) as AutoWiredClient }
-    
-    //1 arg tagged
-    var taggedFactoryCalled = false
-    container.register(tag: "tag") { AutoWiredClientImp(service1: try self.container.resolve(), service2: $0) as AutoWiredClient }.resolvingProperties { _ in
-      taggedFactoryCalled = true
-    }
-    
-    container.register() { ServiceImp1() as Service }
-    container.register { ServiceImp2() }
-    
-    //when
-    let _ = try! container.resolve(tag: "tag") as AutoWiredClient
-    
-    //then
-    XCTAssertTrue(taggedFactoryCalled)
   }
   
   func testThatItFallbackToNotTaggedFactoryWhenUsingAutoWire() {

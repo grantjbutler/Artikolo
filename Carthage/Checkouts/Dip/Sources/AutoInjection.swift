@@ -33,21 +33,27 @@ extension DependencyContainer {
     //mirror only contains class own properties
     //so we need to walk through super class mirrors
     //to resolve super class auto-injected properties
-    var superClassMirror = mirror.superclassMirror
+    var superClassMirror = mirror._superclassMirror
     while superClassMirror != nil {
       try superClassMirror?.children.forEach(resolveChild)
-      superClassMirror = superClassMirror?.superclassMirror
+      superClassMirror = superClassMirror?._superclassMirror
     }
     
     try mirror.children.forEach(resolveChild)
   }
   
   private func resolveChild(child: Mirror.Child) throws {
-    //HOTFIX for https://bugs.swift.org/browse/SR-2282
-    guard !String(describing: type(of: child.value)).has(prefix: "ImplicitlyUnwrappedOptional") else { return }
+    #if swift(>=3.0)
+      //HOTFIX for https://bugs.swift.org/browse/SR-2282
+      guard !String(describing: type(of: child.value)).has(prefix: "ImplicitlyUnwrappedOptional") else { return }
+    #endif
     guard let injectedPropertyBox = child.value as? AutoInjectedPropertyBox else { return }
     
-    let wrappedType = type(of: injectedPropertyBox).wrappedType
+    #if swift(>=3.0)
+      let wrappedType = type(of: injectedPropertyBox).wrappedType
+    #else
+      let wrappedType = injectedPropertyBox.dynamicType.wrappedType
+    #endif
     let contextKey = DefinitionKey(type: wrappedType, typeOfArguments: Void.self, tag: context.tag)
     try inContext(key:contextKey, injectedInType: context?.resolvingType, injectedInProperty: child.label, logErrors: false) {
       try injectedPropertyBox.resolve(self)
@@ -82,6 +88,7 @@ public protocol AutoInjectedPropertyBox: class {
   ///The type of wrapped property.
   static var wrappedType: Any.Type { get }
   
+  #if swift(>=3.0)
   /**
    This method will be called by `DependencyContainer` during processing resolved instance properties.
    In this method you should resolve an instance for wrapped property and store a reference to it.
@@ -91,6 +98,17 @@ public protocol AutoInjectedPropertyBox: class {
    - note: This method is not intended to be called manually, `DependencyContainer` will call it by itself.
    */
   func resolve(_ container: DependencyContainer) throws
+  #else
+  /**
+   This method will be called by `DependencyContainer` during processing resolved instance properties.
+   In this method you should resolve an instance for wrapped property and store a reference to it.
+   
+   - parameter container: A container to be used to resolve an instance
+   
+   - note: This method is not intended to be called manually, `DependencyContainer` will call it by itself.
+   */
+  func resolve(container: DependencyContainer) throws
+  #endif
 }
 
 /**
@@ -124,11 +142,7 @@ public final class Injected<T>: _InjectedPropertyBox<T>, AutoInjectedPropertyBox
     }
   }
 
-  init(value: T?, required: Bool = true, tag: DependencyTagConvertible?, overrideTag: Bool, didInject: @escaping (T) -> ()) {
-    self.value = value
-    super.init(required: required, tag: tag, overrideTag: overrideTag, didInject: didInject)
-  }
-
+  #if swift(>=3.0)
   /**
    Creates a new wrapper for auto-injected property.
    
@@ -148,6 +162,11 @@ public final class Injected<T>: _InjectedPropertyBox<T>, AutoInjectedPropertyBox
     self.init(value: nil, required: required, tag: tag, overrideTag: true, didInject: didInject)
   }
 
+  init(value: T?, required: Bool = true, tag: DependencyTagConvertible?, overrideTag: Bool, didInject: @escaping (T) -> ()) {
+    self.value = value
+    super.init(required: required, tag: tag, overrideTag: overrideTag, didInject: didInject)
+  }
+  
   public func resolve(_ container: DependencyContainer) throws {
     let resolved: T? = try super.resolve(with: container)
     value = resolved
@@ -161,6 +180,13 @@ public final class Injected<T>: _InjectedPropertyBox<T>, AutoInjectedPropertyBox
     
     return Injected(value: value, required: required, tag: tag, overrideTag: overrideTag, didInject: didInject)
   }
+
+  #else
+  init(value: T?, required: Bool = true, tag: DependencyTagConvertible?, overrideTag: Bool, didInject: (T) -> ()) {
+    self.value = value
+    super.init(required: required, tag: tag, overrideTag: overrideTag, didInject: didInject)
+  }
+  #endif
 
 }
 
@@ -216,11 +242,11 @@ public final class InjectedWeak<T>: _InjectedPropertyBox<T>, AutoInjectedPropert
     return valueBox?.value
   }
 
+  #if swift(>=3.0)
   init(value: T?, required: Bool = true, tag: DependencyTagConvertible?, overrideTag: Bool, didInject: @escaping (T) -> ()) {
     self.valueBox = value.map(WeakBox.init)
     super.init(required: required, tag: tag, overrideTag: overrideTag, didInject: didInject)
   }
-  
   /**
    Creates a new wrapper for weak auto-injected property.
    
@@ -254,6 +280,13 @@ public final class InjectedWeak<T>: _InjectedPropertyBox<T>, AutoInjectedPropert
     return InjectedWeak(value: value, required: required, tag: tag, overrideTag: overrideTag, didInject: didInject)
   }
 
+  #else
+  init(value: T?, required: Bool = true, tag: DependencyTagConvertible?, overrideTag: Bool, didInject: (T) -> ()) {
+    self.valueBox = value.map(WeakBox.init)
+    super.init(required: required, tag: tag, overrideTag: overrideTag, didInject: didInject)
+  }
+  #endif
+
 }
 
 class _InjectedPropertyBox<T> {
@@ -263,12 +296,21 @@ class _InjectedPropertyBox<T> {
   let tag: DependencyContainer.Tag?
   let overrideTag: Bool
 
+  #if swift(>=3.0)
   init(required: Bool = true, tag: DependencyTagConvertible?, overrideTag: Bool, didInject: @escaping (T) -> () = { _ in }) {
     self.required = required
     self.tag = tag?.dependencyTag
     self.overrideTag = overrideTag
     self.didInject = didInject
   }
+  #else
+  init(required: Bool = true, tag: DependencyTagConvertible?, overrideTag: Bool, didInject: (T) -> () = { _ in }) {
+    self.required = required
+    self.tag = tag?.dependencyTag
+    self.overrideTag = overrideTag
+    self.didInject = didInject
+  }
+  #endif
 
   func resolve(with container: DependencyContainer) throws -> T? {
     let tag = overrideTag ? self.tag : container.context.tag

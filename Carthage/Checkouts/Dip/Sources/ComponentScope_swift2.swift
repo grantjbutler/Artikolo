@@ -22,7 +22,7 @@
 // THE SOFTWARE.
 //
 
-#if swift(>=3.0)
+#if !swift(>=3.0)
 
   ///Component scope defines a strategy used by the `DependencyContainer` to manage resolved instances life cycle.
   public enum ComponentScope {
@@ -36,18 +36,18 @@
      
      ```
      container.register { ServiceImp() as Service }
-     container.register { 
+     container.register {
        ServiceConsumerImp(
          service1: try container.resolve() as Service
          service2: try container.resolve() as Service
-       ) as ServiceConsumer
-     }
+         ) as ServiceConsumer
+       }
      let consumer = container.resolve() as ServiceConsumer
      consumer.service1 !== consumer.service2 //true
      
      ```
      */
-    case unique
+    case Unique
     
     /**
      Instance resolved with the same definition will be reused until topmost `resolve(tag:)` method returns.
@@ -73,7 +73,7 @@
      consumer1.service1 !== consumer2.service1 //true
      ```
      */
-    case shared
+    case Shared
     
     /**
      Resolved instance will be retained by the container and always reused.
@@ -82,8 +82,8 @@
      
      - warning: Make sure this component is thread safe or accessed always from the same thread.
      
-     - note: When you override or remove definition from the container an instance 
-             that was resolved with this definition will be released. When you reset 
+     - note: When you override or remove definition from the container an instance
+             that was resolved with this definition will be released. When you reset
              the container it will release all singleton instances.
      
      **Example**:
@@ -103,22 +103,27 @@
      consumer1.service1 === consumer2.service1 //true
      ```
      */
-    case singleton
+    case Singleton
     
     /**
      The same scope as a `Singleton`, but instance will be created when container is bootstrapped.
      
      - seealso: `bootstrap()`
-    */
-    case eagerSingleton
+     */
+    case EagerSingleton
     
     /**
      The same scope as a `Singleton`, but container stores week reference to the resolved instance.
      While a strong reference to the resolved instance exists resolve will return the same instance.
      After the resolved instance is deallocated next resolve will produce a new instance.
-    */
-    case weakSingleton
-    
-  }
+     */
+    case WeakSingleton
   
+    static var unique: ComponentScope { return .Unique }
+    static var shared: ComponentScope { return .Shared }
+    static var singleton: ComponentScope { return .Singleton }
+    static var weakSingleton: ComponentScope { return .WeakSingleton }
+    static var eagerSingleton: ComponentScope { return .EagerSingleton }
+  }
+
 #endif

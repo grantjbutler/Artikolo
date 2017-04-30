@@ -22,7 +22,7 @@
 // THE SOFTWARE.
 //
 
-#if swift(>=3.0)
+#if !swift(>=3.0)
   extension DependencyContainer {
     /**
      Registers definition for passed type.
@@ -38,10 +38,10 @@
      
      - returns: New definition registered for passed type.
      */
-    @discardableResult public func register<T, U, F>(_ definition: Definition<T, U>, type: F.Type, tag: DependencyTagConvertible? = nil) -> Definition<F, U> {
+    public func register<T, U, F>(definition: Definition<T, U>, type: F.Type, tag: DependencyTagConvertible? = nil) -> Definition<F, U> {
       return _register(definition: definition, type: type, tag: tag)
     }
-
+    
     /**
      Register definiton in the container and associate it with an optional tag.
      Will override already registered definition for the same type and factory, associated with the same tag.
@@ -51,34 +51,9 @@
         - definition: The definition to register in the container.
      
      */
-    public func register<T, U>(_ definition: Definition<T, U>, tag: DependencyTagConvertible? = nil) {
+    public func register<T, U>(definition: Definition<T, U>, tag: DependencyTagConvertible? = nil) {
       _register(definition: definition, tag: tag)
     }
-
   }
 #endif
-
-extension DependencyContainer {
-  
-  func _register<T, U>(definition aDefinition: Definition<T, U>, tag: DependencyTagConvertible? = nil) {
-    precondition(!bootstrapped, "You can not modify container's definitions after it was bootstrapped.")
-    let definition = aDefinition
-    threadSafe {
-      let key = DefinitionKey(type: T.self, typeOfArguments: U.self, tag: tag?.dependencyTag)
-      if let _ = definitions[key] {
-        _remove(definitionForKey: key)
-      }
-      
-      definition.container = self
-      definitions[key] = definition
-      resolvedInstances.singletons[key] = nil
-      resolvedInstances.weakSingletons[key] = nil
-      
-      if .eagerSingleton == definition.scope {
-        bootstrapQueue.append({ _ = try self.resolve(tag: tag) as T })
-      }
-    }
-  }
-  
-}
 
