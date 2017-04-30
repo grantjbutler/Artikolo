@@ -8,15 +8,20 @@
 
 import UIKit
 import CoreData
+import Dip
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let dataManager = DataManager(backend: CoreDataDataManagerBackend(containerName: "Artikolo"))
-
+    
+    let container = DependencyContainer { container in
+        container.register(.singleton) { DataManager(backend: CoreDataDataManagerBackend(containerName: "Artikolo")) }
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let articleTableViewController = ArticleTableViewController(style: .plain)
+        
+        let articleTableViewController = ArticleTableViewController(dataManager: try! container.resolve())
         let navigationController = UINavigationController(rootViewController: articleTableViewController)
         
         window = UIWindow(frame: UIScreen.main.bounds)
