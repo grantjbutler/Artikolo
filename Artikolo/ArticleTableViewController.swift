@@ -25,7 +25,7 @@ class ArticleTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(cellClass: UITableViewCell.self)
     }
 
     // MARK: - <UITableViewDataSource>
@@ -35,7 +35,7 @@ class ArticleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell: UITableViewCell = tableView.dequeueReusableCell(for: indexPath)
 
         let url = urls[indexPath.row]
         cell.textLabel?.text = url.description
