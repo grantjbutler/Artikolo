@@ -1,3 +1,4 @@
 github "AliSoftware/Dip" == 5.0.4
-github "JensRavens/Interstellar"
+github "ReactiveX/RxSwift" ~> 3.0
+github "RxSwiftCommunity/RxDataSources" ~> 1.0
 
