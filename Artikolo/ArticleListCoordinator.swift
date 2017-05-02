@@ -6,7 +6,7 @@
 //  Copyright © 2017 Grant Butler. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ArticleListCoordinator: Coordinator {
     
@@ -14,7 +14,30 @@ class ArticleListCoordinator: Coordinator {
         let dataManager: DataManager = try! container.resolve()
         
         let viewController = ArticleTableViewController(urls: dataManager.urls)
+        
+        viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ArticleListCoordinator.askForURL))
+        
         navigationController.pushViewController(viewController, animated: false)
+    }
+    
+    @objc
+    func askForURL() {
+        let alertController = UIAlertController(title: "Add URL", message: nil, preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+            textField.placeholder = "https://"
+            textField.keyboardType = .URL
+        }
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak alertController] (action) in
+            guard let textField = alertController?.textFields?.first else { return }
+            guard let urlString = textField.text else { return }
+            guard let url = URL(string: urlString) else { return }
+            
+            let dataManager: DataManager = try! self.container.resolve()
+            dataManager.save(url: url)
+        }))
+        
+        navigationController.present(alertController, animated: true, completion: nil)
     }
     
 }
