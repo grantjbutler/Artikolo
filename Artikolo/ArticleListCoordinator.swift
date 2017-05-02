@@ -11,7 +11,9 @@ import Foundation
 class ArticleListCoordinator: Coordinator {
     
     override func start() {
-        let viewController = ArticleTableViewController(dataManager: try! container.resolve())
+        let dataManager: DataManager = try! container.resolve()
+        
+        let viewController = ArticleTableViewController(urls: dataManager.urls)
         navigationController.pushViewController(viewController, animated: false)
     }
     

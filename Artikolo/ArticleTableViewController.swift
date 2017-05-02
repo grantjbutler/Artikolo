@@ -10,10 +10,10 @@ import UIKit
 
 class ArticleTableViewController: UITableViewController {
 
-    let dataManager: DataManager
+    let urls: [URL]
     
-    init(dataManager: DataManager) {
-        self.dataManager = dataManager
+    init(urls: [URL]) {
+        self.urls = urls
         
         super.init(style: .plain)
     }
@@ -33,16 +33,16 @@ class ArticleTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
+    // MARK: - <UITableViewDataSource>
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataManager.urls.count
+        return urls.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        let url = dataManager.urls[indexPath.row]
+        let url = urls[indexPath.row]
         cell.textLabel?.text = url.description
 
         return cell
