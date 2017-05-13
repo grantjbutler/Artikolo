@@ -50,7 +50,7 @@ class CoreDataDataManagerBackend: DataManagerBackend {
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Article")
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "url", ascending: true)
+            NSSortDescriptor(key: "url.absoluteString", ascending: true)
         ]
         
         articles = container.viewContext.rx.entities(fetchRequest: fetchRequest)
