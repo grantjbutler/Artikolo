@@ -1,3 +1,4 @@
 github "AliSoftware/Dip" "5.0.4"
 github "ReactiveX/RxSwift" "3.4.1"
+github "RxSwiftCommunity/RxCoreData" "0.3.1"
 github "RxSwiftCommunity/RxDataSources" "1.0.3"
