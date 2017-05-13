@@ -40,6 +40,8 @@ class CoreDataDataManagerBackend: DataManagerBackend {
         container.persistentStoreDescriptions.forEach { $0.shouldMigrateStoreAutomatically = true }
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             guard let error = error else { return }
+            
+#if DEBUG
             print("Got error, reseting container to attempt a resolve: \(error)")
             
             try! container.removeStores()
@@ -49,6 +51,9 @@ class CoreDataDataManagerBackend: DataManagerBackend {
                     fatalError("Unresolved error \(error), \(error.userInfo)")
                 }
             })
+#else
+            fatalError("Unresolved error \(error), \(error.userInfo)")
+#endif
         })
         return container
     }
