@@ -8,21 +8,14 @@
 
 import Foundation
 import CoreData
+import RxSwift
+import RxCoreData
 
 class CoreDataDataManagerBackend: DataManagerBackend {
     
     private let container: NSPersistentContainer
-    var urls: [URL] {
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Article")
-        
-        do {
-            let articleObjects = try container.viewContext.fetch(fetchRequest)
-            return articleObjects.map { $0.value(forKey: "url") as! URL }
-        }
-        catch {
-            return []
-        }
-    }
+    
+    let urls: Observable<[URL]>
     
     private static func makePersistentContainer(name: String) -> NSPersistentContainer {
         /*
@@ -53,6 +46,19 @@ class CoreDataDataManagerBackend: DataManagerBackend {
     
     init(containerName: String) {
         container = type(of: self).makePersistentContainer(name: containerName)
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Article")
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(key: "url", ascending: true)
+        ]
+        
+        urls = container.viewContext.rx.entities(fetchRequest: fetchRequest)
+                .map {
+                    $0.map {
+                        $0.value(forKey: "url") as! URL
+                    }
+                }
     }
     
     func save(url: URL) {

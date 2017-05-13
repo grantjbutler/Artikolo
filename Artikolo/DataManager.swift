@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol DataManagerBackend {
     
-    var urls: [URL] { get }
+    var urls: Observable<[URL]> { get }
     
     func save(url: URL)
     func reset() throws
@@ -21,7 +22,7 @@ class DataManager {
     
     let backend: DataManagerBackend
     
-    var urls: [URL] {
+    var urls: Observable<[URL]> {
         return backend.urls
     }
     
