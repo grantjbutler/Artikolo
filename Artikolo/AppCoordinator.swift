@@ -35,20 +35,20 @@ class AppCoordinator: Coordinator {
     }
     
     func setupForRunning() {
-        let regularExpression = try! NSRegularExpression(pattern: "-([A-Za-z]+)(=(.*))?", options: [])
+        let regularExpression = try! NSRegularExpression(pattern: "^-([A-Za-z]+)(=(.*))?$", options: [])
         CommandLine.arguments.forEach { (argument) in
             guard let match = regularExpression.firstMatch(in: argument, options: [], range: NSMakeRange(0, argument.utf16.count)) else { return }
             
-            let commandRange = match.rangeAt(0)
+            let commandRange = match.rangeAt(1)
             let commandName = (argument as NSString).substring(with: commandRange)
             guard let command = commands[commandName] else { return }
             
-            let hasInput = match.numberOfRanges > 1
+            let hasInput = match.numberOfRanges > 2
             
             switch (command, hasInput) {
             case (let .basic(action), _): action()
             case (let .input(action), true):
-                let metadataRange = match.rangeAt(2)
+                let metadataRange = match.rangeAt(3)
                 let metadata = (argument as NSString).substring(with: metadataRange)
                 action(metadata)
             
