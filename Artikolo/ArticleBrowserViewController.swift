@@ -9,6 +9,32 @@
 import UIKit
 import WebKit
 
+private var titleContext = 0
+
+extension WKWebView {
+    
+    @objc
+    dynamic class func keyPathsForValuesAffectingDisplayTitle() -> NSSet {
+        return NSSet(array: [
+            #keyPath(WKWebView.title),
+            #keyPath(WKWebView.url)
+        ])
+    }
+    
+    dynamic var displayTitle: String {
+        if let title = title, !title.isEmpty {
+            return title
+        }
+        else if let url = url {
+            return url.absoluteString
+        }
+        else {
+            return "Loading..."
+        }
+    }
+    
+}
+
 class ArticleBrowserViewController: UIViewController {
     
     private var webView: WKWebView!
@@ -20,6 +46,10 @@ class ArticleBrowserViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    deinit {
+        webView.removeObserver(self, forKeyPath: #keyPath(WKWebView.title))
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -28,6 +58,7 @@ class ArticleBrowserViewController: UIViewController {
         super.viewDidLoad()
     
         webView = WKWebView(frame: .zero, configuration: WKWebViewConfiguration())
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.displayTitle), options: [.initial], context: &titleContext)
         view.addSubview(webView)
         
         webView.translatesAutoresizingMaskIntoConstraints = false
@@ -45,20 +76,13 @@ class ArticleBrowserViewController: UIViewController {
         webView.load(urlRequest)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if context == &titleContext {
+            title = webView.displayTitle
+        }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
