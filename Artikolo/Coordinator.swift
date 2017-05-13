@@ -18,6 +18,8 @@ class Coordinator {
     init(navigationController: UINavigationController, container: DependencyContainer = DependencyContainer()) {
         self.navigationController = navigationController
         self.container = container
+        
+        self.navigationController.navigationBar.accessibilityIdentifier = "NavigationBar"
     }
     
     func start() {

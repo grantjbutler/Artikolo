@@ -15,7 +15,9 @@ class ArticleListCoordinator: Coordinator {
         
         let viewController = ArticleTableViewController(articles: dataManager.articles)
         
-        viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ArticleListCoordinator.askForURL))
+        let addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ArticleListCoordinator.askForURL))
+        addBarButtonItem.accessibilityIdentifier = "AddArticleButton"
+        viewController.navigationItem.rightBarButtonItem = addBarButtonItem
         
         navigationController.pushViewController(viewController, animated: false)
     }
@@ -26,6 +28,7 @@ class ArticleListCoordinator: Coordinator {
         alertController.addTextField { (textField) in
             textField.placeholder = "https://"
             textField.keyboardType = .URL
+            textField.accessibilityIdentifier = "URLInputTextField"
         }
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alertController.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak alertController] (action) in
