@@ -46,14 +46,12 @@ class ArticleTableViewController: UITableViewController {
         }
         .addDisposableTo(disposeBag)
         
-        Observable.combineLatest(articles, tableView.rx.itemSelected, resultSelector: { (allArticles, indexPath) -> Article in
-            return allArticles[indexPath.row]
-        })
-        .subscribe(onNext: { [weak self] (article) in
-            guard let strongSelf = self else { return }
-            strongSelf.delegate?.userDidTap(article: article, in: strongSelf)
-        })
-        .addDisposableTo(disposeBag)
+        tableView.rx.modelSelected(Article.self)
+            .subscribe(onNext: { [weak self] (article) in
+                guard let strongSelf = self else { return }
+                strongSelf.delegate?.userDidTap(article: article, in: strongSelf)
+            })
+            .addDisposableTo(disposeBag)
     }
 
 }
