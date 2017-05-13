@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C3334DB31EC7A144000B6C4E /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3334DB21EC7A144000B6C4E /* Article.swift */; };
+		C3334DB51EC7A3E3000B6C4E /* ArticleTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3334DB41EC7A3E3000B6C4E /* ArticleTableViewControllerTests.swift */; };
 		C363B3A01EB6AC1300F7E98F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C363B39F1EB6AC1300F7E98F /* Coordinator.swift */; };
 		C363B3A21EB6AC7F00F7E98F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C363B3A11EB6AC7F00F7E98F /* AppCoordinator.swift */; };
 		C363B3A41EB6AE4B00F7E98F /* ArticleListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C363B3A31EB6AE4B00F7E98F /* ArticleListCoordinator.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		C3334DB21EC7A144000B6C4E /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		C3334DB41EC7A3E3000B6C4E /* ArticleTableViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewControllerTests.swift; sourceTree = "<group>"; };
 		C363B39F1EB6AC1300F7E98F /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C363B3A11EB6AC7F00F7E98F /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		C363B3A31EB6AE4B00F7E98F /* ArticleListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListCoordinator.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				C3F7D87C1EB68AAD00A85568 /* ArtikoloUITests.swift */,
+				C3334DB41EC7A3E3000B6C4E /* ArticleTableViewControllerTests.swift */,
 				C3F7D87E1EB68AAD00A85568 /* Info.plist */,
 			);
 			path = ArtikoloUITests;
@@ -355,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3334DB51EC7A3E3000B6C4E /* ArticleTableViewControllerTests.swift in Sources */,
 				C3F7D87D1EB68AAD00A85568 /* ArtikoloUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
