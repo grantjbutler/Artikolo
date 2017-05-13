@@ -8,13 +8,16 @@
 
 import XCTest
 @testable import Artikolo
+import RxSwift
 
 class DataManagerTests: XCTestCase {
     
     let dataManager = DataManager(backend: ArrayBackend())
+    var disposeBag: DisposeBag!
     
     override func setUp() {
         super.setUp()
+        disposeBag = DisposeBag()
         
         try! dataManager.reset()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -27,23 +30,37 @@ class DataManagerTests: XCTestCase {
     
     func testURLCanBeSaved() {
         let url = URL(string: "http://zeldathon.net/")!
+        var urls: [URL] = []
+        
+        dataManager.urls.subscribe(onNext: {
+            urls = $0
+        })
+        .addDisposableTo(disposeBag)
+        
         dataManager.save(url: url)
         
-        XCTAssertEqual(dataManager.urls, [url])
+        XCTAssertEqual(urls, [url])
     }
     
 }
 
 class ArrayBackend: DataManagerBackend {
     
-    var urls: [URL] = []
+    private let urlsVariable = Variable<[URL]>([])
+    let urls: Observable<[URL]>
+    
+    init() {
+        urls = urlsVariable.asObservable()
+    }
     
     func save(url: URL) {
-        urls += [url]
+        var mutableUrls = urlsVariable.value
+        mutableUrls.append(url)
+        urlsVariable.value = mutableUrls
     }
     
     func reset() {
-        urls = []
+        urlsVariable.value = []
     }
     
 }
