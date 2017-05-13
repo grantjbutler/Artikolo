@@ -23,8 +23,6 @@ class ArticleTableViewController: UITableViewController {
     private let disposeBag = DisposeBag()
     private weak var delegate: ArticleTableViewControllerDelegate?
     
-//    private var itemSelectionObservable: Observable<Article>!
-    
     init(articles: Observable<[Article]>, delegate: ArticleTableViewControllerDelegate) {
         self.articles = articles
         self.delegate = delegate
