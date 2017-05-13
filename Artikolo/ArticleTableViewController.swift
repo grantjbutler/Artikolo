@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import RxSwift
+import RxDataSources
 
 class ArticleTableViewController: UITableViewController {
-
-    let urls: [URL]
     
-    init(urls: [URL]) {
+    private let urls: Observable<[URL]>
+    private let disposeBag = DisposeBag()
+    
+    init(urls: Observable<[URL]>) {
         self.urls = urls
         
         super.init(style: .plain)
@@ -24,23 +27,13 @@ class ArticleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
         tableView.register(cellClass: UITableViewCell.self)
-    }
-
-    // MARK: - <UITableViewDataSource>
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return urls.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(for: indexPath)
-
-        let url = urls[indexPath.row]
-        cell.textLabel?.text = url.description
-
-        return cell
+        
+        urls.bind(to: tableView.rx.items(cellIdentifier: UITableViewCell.ReuseIdentifier)) { index, model, cell in
+            cell.textLabel?.text = model.description
+        }
+        .addDisposableTo(disposeBag)
     }
 
 }
