@@ -1,5 +1,5 @@
 //
-//  ArticleTableViewControllerTests.swift
+//  AddArticleUITests.swift
 //  Artikolo
 //
 //  Created by Grant Butler on 5/13/17.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class ArticleTableViewControllerTests: XCTestCase {
+class AddArticleUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
