@@ -14,8 +14,17 @@ class AppCoordinator: Coordinator {
     override func start() {
         container.register(.singleton) { DataManager(backend: CoreDataDataManagerBackend(containerName: "Artikolo")) }
         
+        setupForRunning()
+        
         let articleListCoordinator = ArticleListCoordinator(navigationController: navigationController, container: container)
         addChild(articleListCoordinator)
+    }
+    
+    func setupForRunning() {
+        if CommandLine.arguments.contains("-ResetDatabase") {
+            let dataManager = try! container.resolve() as DataManager
+            try! dataManager.reset()
+        }
     }
     
 }
