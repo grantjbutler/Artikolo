@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ArticleListCoordinator: Coordinator {
+class ArticleListCoordinator: Coordinator, ArticleTableViewControllerDelegate {
     
     override func start() {
         let dataManager: DataManager = try! container.resolve()
         
-        let viewController = ArticleTableViewController(articles: dataManager.articles)
+        let viewController = ArticleTableViewController(articles: dataManager.articles, delegate: self)
         
         let addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ArticleListCoordinator.askForURL))
         addBarButtonItem.accessibilityIdentifier = "AddArticleButton"
@@ -43,6 +43,13 @@ class ArticleListCoordinator: Coordinator {
         }))
         
         navigationController.present(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: -
+    
+    func userDidTap(article: Article, in: ArticleTableViewController) {
+        let articleBrowserCoordinator = ArticleBrowserCoordinator(navigationController: navigationController, container: container, article: article)
+        addChild(articleBrowserCoordinator)
     }
     
 }
