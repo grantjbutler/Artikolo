@@ -29,7 +29,7 @@ extension WKWebView {
             return url.absoluteString
         }
         else {
-            return "Loading..."
+            return NSLocalizedString("Loading...", comment: "Displayed when a website is loading.")
         }
     }
     
