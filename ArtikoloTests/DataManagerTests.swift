@@ -43,6 +43,22 @@ class DataManagerTests: XCTestCase {
         XCTAssertEqual(articles, [article])
     }
     
+    func testDataManagerIsReset() {
+        let article = Article(url: URL(string: "http://zeldathon.net/")!)
+        
+        var articles: [Article] = []
+        
+        dataManager.articles.subscribe(onNext: {
+            articles = $0
+        })
+        .addDisposableTo(disposeBag)
+        
+        dataManager.save(article: article)
+        try! dataManager.reset()
+        
+        XCTAssertEqual(articles, [])
+    }
+    
 }
 
 class ArrayBackend: DataManagerBackend {
