@@ -22,6 +22,11 @@
 		C3F7D8911EB69BF800A85568 /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F7D8901EB69BF800A85568 /* ArticleTableViewController.swift */; };
 		C3F7D89D1EB6A7E400A85568 /* Dip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F7D89C1EB6A7E400A85568 /* Dip.framework */; };
 		C3F998DA1EB80601000081F8 /* UITableViewCell+TypeSafety.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F998D91EB80601000081F8 /* UITableViewCell+TypeSafety.swift */; };
+		C3F998E11EB81CE5000081F8 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F998DD1EB81CE5000081F8 /* RxBlocking.framework */; };
+		C3F998E21EB81CE5000081F8 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F998DE1EB81CE5000081F8 /* RxCocoa.framework */; };
+		C3F998E31EB81CE5000081F8 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F998DF1EB81CE5000081F8 /* RxDataSources.framework */; };
+		C3F998E41EB81CE5000081F8 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F998E01EB81CE5000081F8 /* RxSwift.framework */; };
+		C3F998E61EB81F86000081F8 /* RxCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F998E51EB81F86000081F8 /* RxCoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +68,11 @@
 		C3F7D8901EB69BF800A85568 /* ArticleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
 		C3F7D89C1EB6A7E400A85568 /* Dip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dip.framework; path = Carthage/Build/iOS/Dip.framework; sourceTree = SOURCE_ROOT; };
 		C3F998D91EB80601000081F8 /* UITableViewCell+TypeSafety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+TypeSafety.swift"; sourceTree = "<group>"; };
+		C3F998DD1EB81CE5000081F8 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = SOURCE_ROOT; };
+		C3F998DE1EB81CE5000081F8 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = SOURCE_ROOT; };
+		C3F998DF1EB81CE5000081F8 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = SOURCE_ROOT; };
+		C3F998E01EB81CE5000081F8 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = SOURCE_ROOT; };
+		C3F998E51EB81F86000081F8 /* RxCoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCoreData.framework; path = Carthage/Build/iOS/RxCoreData.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +80,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3F998E41EB81CE5000081F8 /* RxSwift.framework in Frameworks */,
+				C3F998E21EB81CE5000081F8 /* RxCocoa.framework in Frameworks */,
 				C3F7D89D1EB6A7E400A85568 /* Dip.framework in Frameworks */,
+				C3F998E61EB81F86000081F8 /* RxCoreData.framework in Frameworks */,
+				C3F998E11EB81CE5000081F8 /* RxBlocking.framework in Frameworks */,
+				C3F998E31EB81CE5000081F8 /* RxDataSources.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +141,11 @@
 				C3F7D8651EB68AAD00A85568 /* LaunchScreen.storyboard */,
 				C3F7D8681EB68AAD00A85568 /* Info.plist */,
 				C3F7D8601EB68AAD00A85568 /* Artikolo.xcdatamodeld */,
+				C3F998E51EB81F86000081F8 /* RxCoreData.framework */,
+				C3F998DD1EB81CE5000081F8 /* RxBlocking.framework */,
+				C3F998DE1EB81CE5000081F8 /* RxCocoa.framework */,
+				C3F998DF1EB81CE5000081F8 /* RxDataSources.framework */,
+				C3F998E01EB81CE5000081F8 /* RxSwift.framework */,
 				C3F7D89C1EB6A7E400A85568 /* Dip.framework */,
 			);
 			path = Artikolo;
@@ -287,6 +307,11 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Dip.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCoreData.framework",
 			);
 			outputPaths = (
 			);
