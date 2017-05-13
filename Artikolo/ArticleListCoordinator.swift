@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class ArticleListCoordinator: Coordinator, ArticleTableViewControllerDelegate {
+class ArticleListCoordinator: Coordinator {
+    
+    let disposeBag = DisposeBag()
     
     override func start() {
         let dataManager: DataManager = try! container.resolve()
         
-        let viewController = ArticleTableViewController(articles: dataManager.articles, delegate: self)
+        let viewController = ArticleTableViewController(articles: dataManager.articles)
+        viewController.tableView.rx.modelSelected(Article.self)
+            .subscribe(onNext: self.show(article:))
+            .addDisposableTo(disposeBag)
         
         let addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ArticleListCoordinator.askForURL))
         addBarButtonItem.accessibilityIdentifier = "AddArticleButton"
@@ -45,9 +52,7 @@ class ArticleListCoordinator: Coordinator, ArticleTableViewControllerDelegate {
         navigationController.present(alertController, animated: true, completion: nil)
     }
     
-    // MARK: -
-    
-    func userDidTap(article: Article, in: ArticleTableViewController) {
+    func show(article: Article) {
         let articleBrowserCoordinator = ArticleBrowserCoordinator(navigationController: navigationController, container: container, article: article)
         addChild(articleBrowserCoordinator)
     }

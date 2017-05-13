@@ -11,21 +11,13 @@ import RxSwift
 import RxDataSources
 import RxCocoa
 
-protocol ArticleTableViewControllerDelegate: class {
-    
-    func userDidTap(article: Article, in: ArticleTableViewController)
-    
-}
-
 class ArticleTableViewController: UITableViewController {
     
     private let articles: Observable<[Article]>
     private let disposeBag = DisposeBag()
-    private weak var delegate: ArticleTableViewControllerDelegate?
     
-    init(articles: Observable<[Article]>, delegate: ArticleTableViewControllerDelegate) {
+    init(articles: Observable<[Article]>) {
         self.articles = articles
-        self.delegate = delegate
         
         super.init(style: .plain)
     }
@@ -43,13 +35,6 @@ class ArticleTableViewController: UITableViewController {
             cell.textLabel?.text = article.url.description
         }
         .addDisposableTo(disposeBag)
-        
-        tableView.rx.modelSelected(Article.self)
-            .subscribe(onNext: { [weak self] (article) in
-                guard let strongSelf = self else { return }
-                strongSelf.delegate?.userDidTap(article: article, in: strongSelf)
-            })
-            .addDisposableTo(disposeBag)
     }
 
 }
