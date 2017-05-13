@@ -3,7 +3,17 @@
     <entity name="Article" representedClassName="" syncable="YES">
         <attribute name="addedOn" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="createdOn" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="url" attributeType="Transformable" valueTransformerName="NSKeyedUnarchiveFromDataTransformerName" syncable="YES"/>
+        <attribute name="url" attributeType="Transformable" valueTransformerName="" syncable="YES"/>
+        <compoundIndexes>
+            <compoundIndex>
+                <index value="url"/>
+            </compoundIndex>
+        </compoundIndexes>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="url"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
         <element name="Article" positionX="-63" positionY="-18" width="128" height="90"/>
