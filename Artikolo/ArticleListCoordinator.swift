@@ -43,7 +43,7 @@ class ArticleListCoordinator: Coordinator {
             guard let urlString = textField.text else { return }
             guard let url = URL(string: urlString) else { return }
             
-            let article = Article(url: url)
+            let article = Article(url: url, addedOn: Date(), createdOn: Date())
             
             let dataManager: DataManager = try! self.container.resolve()
             dataManager.save(article: article)
