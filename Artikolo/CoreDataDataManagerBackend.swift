@@ -15,7 +15,7 @@ class CoreDataDataManagerBackend: DataManagerBackend {
     
     private let container: NSPersistentContainer
     
-    let urls: Observable<[URL]>
+    let articles: Observable<[Article]>
     
     private static func makePersistentContainer(name: String) -> NSPersistentContainer {
         /*
@@ -53,19 +53,20 @@ class CoreDataDataManagerBackend: DataManagerBackend {
             NSSortDescriptor(key: "url", ascending: true)
         ]
         
-        urls = container.viewContext.rx.entities(fetchRequest: fetchRequest)
+        articles = container.viewContext.rx.entities(fetchRequest: fetchRequest)
                 .map {
                     $0.map {
-                        $0.value(forKey: "url") as! URL
+                        let url = $0.value(forKey: "url") as! URL
+                        return Article(url: url)
                     }
                 }
     }
     
-    func save(url: URL) {
+    func save(article: Article) {
         let context = container.newBackgroundContext()
         context.performAndWait {
             let articleObject = NSEntityDescription.insertNewObject(forEntityName: "Article", into: context)
-            articleObject.setValue(url, forKey: "url")
+            articleObject.setValue(article.url, forKey: "url")
             
             do {
                 try context.save()

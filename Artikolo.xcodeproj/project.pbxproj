@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3334DB31EC7A144000B6C4E /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3334DB21EC7A144000B6C4E /* Article.swift */; };
 		C363B3A01EB6AC1300F7E98F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C363B39F1EB6AC1300F7E98F /* Coordinator.swift */; };
 		C363B3A21EB6AC7F00F7E98F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C363B3A11EB6AC7F00F7E98F /* AppCoordinator.swift */; };
 		C363B3A41EB6AE4B00F7E98F /* ArticleListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C363B3A31EB6AE4B00F7E98F /* ArticleListCoordinator.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C3334DB21EC7A144000B6C4E /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		C363B39F1EB6AC1300F7E98F /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C363B3A11EB6AC7F00F7E98F /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		C363B3A31EB6AE4B00F7E98F /* ArticleListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListCoordinator.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				C363B3A11EB6AC7F00F7E98F /* AppCoordinator.swift */,
 				C363B3A31EB6AE4B00F7E98F /* ArticleListCoordinator.swift */,
 				C3F7D8901EB69BF800A85568 /* ArticleTableViewController.swift */,
+				C3334DB21EC7A144000B6C4E /* Article.swift */,
 				C3F7D88C1EB690C100A85568 /* DataManager.swift */,
 				C3F7D88E1EB694FD00A85568 /* CoreDataDataManagerBackend.swift */,
 				C3F998D91EB80601000081F8 /* UITableViewCell+TypeSafety.swift */,
@@ -330,6 +333,7 @@
 				C3F7D88D1EB690C100A85568 /* DataManager.swift in Sources */,
 				C3F7D88F1EB694FD00A85568 /* CoreDataDataManagerBackend.swift in Sources */,
 				C3F7D8621EB68AAD00A85568 /* Artikolo.xcdatamodeld in Sources */,
+				C3334DB31EC7A144000B6C4E /* Article.swift in Sources */,
 				C363B3A21EB6AC7F00F7E98F /* AppCoordinator.swift in Sources */,
 				C3F7D8911EB69BF800A85568 /* ArticleTableViewController.swift in Sources */,
 				C3F998DA1EB80601000081F8 /* UITableViewCell+TypeSafety.swift in Sources */,

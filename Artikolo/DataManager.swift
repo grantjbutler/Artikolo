@@ -11,9 +11,9 @@ import RxSwift
 
 protocol DataManagerBackend {
     
-    var urls: Observable<[URL]> { get }
+    var articles: Observable<[Article]> { get }
     
-    func save(url: URL)
+    func save(article: Article)
     func reset() throws
     
 }
@@ -22,16 +22,16 @@ class DataManager {
     
     let backend: DataManagerBackend
     
-    var urls: Observable<[URL]> {
-        return backend.urls
+    var articles: Observable<[Article]> {
+        return backend.articles
     }
     
     init(backend: DataManagerBackend) {
         self.backend = backend
     }
     
-    func save(url: URL) {
-        backend.save(url: url)
+    func save(article: Article) {
+        backend.save(article: article)
     }
     
     func reset() throws {

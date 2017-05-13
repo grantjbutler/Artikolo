@@ -13,7 +13,7 @@ class ArticleListCoordinator: Coordinator {
     override func start() {
         let dataManager: DataManager = try! container.resolve()
         
-        let viewController = ArticleTableViewController(urls: dataManager.urls)
+        let viewController = ArticleTableViewController(articles: dataManager.articles)
         
         viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ArticleListCoordinator.askForURL))
         
@@ -33,8 +33,10 @@ class ArticleListCoordinator: Coordinator {
             guard let urlString = textField.text else { return }
             guard let url = URL(string: urlString) else { return }
             
+            let article = Article(url: url)
+            
             let dataManager: DataManager = try! self.container.resolve()
-            dataManager.save(url: url)
+            dataManager.save(article: article)
         }))
         
         navigationController.present(alertController, animated: true, completion: nil)

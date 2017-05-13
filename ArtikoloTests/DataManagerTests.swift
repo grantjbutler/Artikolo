@@ -29,38 +29,39 @@ class DataManagerTests: XCTestCase {
     }
     
     func testURLCanBeSaved() {
-        let url = URL(string: "http://zeldathon.net/")!
-        var urls: [URL] = []
+        let article = Article(url: URL(string: "http://zeldathon.net/")!)
         
-        dataManager.urls.subscribe(onNext: {
-            urls = $0
+        var articles: [Article] = []
+        
+        dataManager.articles.subscribe(onNext: {
+            articles = $0
         })
         .addDisposableTo(disposeBag)
         
-        dataManager.save(url: url)
+        dataManager.save(article: article)
         
-        XCTAssertEqual(urls, [url])
+        XCTAssertEqual(articles, [article])
     }
     
 }
 
 class ArrayBackend: DataManagerBackend {
     
-    private let urlsVariable = Variable<[URL]>([])
-    let urls: Observable<[URL]>
+    private let articlesVariable = Variable<[Article]>([])
+    let articles: Observable<[Article]>
     
     init() {
-        urls = urlsVariable.asObservable()
+        articles = articlesVariable.asObservable()
     }
     
-    func save(url: URL) {
-        var mutableUrls = urlsVariable.value
-        mutableUrls.append(url)
-        urlsVariable.value = mutableUrls
+    func save(article: Article) {
+        var mutableArticles = articlesVariable.value
+        mutableArticles.append(article)
+        articlesVariable.value = mutableArticles
     }
     
     func reset() {
-        urlsVariable.value = []
+        articlesVariable.value = []
     }
     
 }

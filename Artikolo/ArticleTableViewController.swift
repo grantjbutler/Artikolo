@@ -12,11 +12,11 @@ import RxDataSources
 
 class ArticleTableViewController: UITableViewController {
     
-    private let urls: Observable<[URL]>
+    private let articles: Observable<[Article]>
     private let disposeBag = DisposeBag()
     
-    init(urls: Observable<[URL]>) {
-        self.urls = urls
+    init(articles: Observable<[Article]>) {
+        self.articles = articles
         
         super.init(style: .plain)
     }
@@ -30,8 +30,8 @@ class ArticleTableViewController: UITableViewController {
     
         tableView.register(cellClass: UITableViewCell.self)
         
-        urls.bind(to: tableView.rx.items(cellIdentifier: UITableViewCell.ReuseIdentifier)) { index, model, cell in
-            cell.textLabel?.text = model.description
+        articles.bind(to: tableView.rx.items(cellIdentifier: UITableViewCell.ReuseIdentifier)) { index, article, cell in
+            cell.textLabel?.text = article.url.description
         }
         .addDisposableTo(disposeBag)
     }
