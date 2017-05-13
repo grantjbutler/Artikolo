@@ -18,6 +18,7 @@ class ArticleListCoordinator: Coordinator {
         let dataManager: DataManager = try! container.resolve()
         
         let viewController = ArticleTableViewController(articles: dataManager.articles)
+        viewController.title = "Articles"
         viewController.tableView.rx.modelSelected(Article.self)
             .subscribe(onNext: self.show(article:))
             .addDisposableTo(disposeBag)
