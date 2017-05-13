@@ -30,6 +30,7 @@ class AppCoordinator: Coordinator {
     private var commands: [String: Command]{
         return [
             "ResetDatabase": Command.basic(self.resetDatabase),
+            "AddArticle":    Command.input(self.addArticle)
         ]
     }
     
@@ -59,6 +60,14 @@ class AppCoordinator: Coordinator {
     private func resetDatabase() {
         let dataManager = try! container.resolve() as DataManager
         try! dataManager.reset()
+    }
+    
+    private func addArticle(articleJSON: String) {
+        let JSON = try! JSONSerialization.jsonObject(with: articleJSON.data(using: .utf8)!, options: []) as! [String: Any]
+        let article = try! Article.parse(JSON: JSON)
+        
+        let dataManager = try! container.resolve() as DataManager
+        dataManager.save(article: article)
     }
     
 }
