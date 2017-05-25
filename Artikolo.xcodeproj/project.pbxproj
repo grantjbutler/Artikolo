@@ -15,6 +15,9 @@
 		C363B3A01EB6AC1300F7E98F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C363B39F1EB6AC1300F7E98F /* Coordinator.swift */; };
 		C363B3A21EB6AC7F00F7E98F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C363B3A11EB6AC7F00F7E98F /* AppCoordinator.swift */; };
 		C363B3A41EB6AE4B00F7E98F /* ArticleListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C363B3A31EB6AE4B00F7E98F /* ArticleListCoordinator.swift */; };
+		C3DB0AD31ED66E5300FCD59D /* ActionRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB0AD21ED66E5300FCD59D /* ActionRequestHandler.swift */; };
+		C3DB0AD51ED66E5300FCD59D /* Action.js in Resources */ = {isa = PBXBuildFile; fileRef = C3DB0AD41ED66E5300FCD59D /* Action.js */; };
+		C3DB0AD91ED66E5300FCD59D /* ActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C3DB0AD01ED66E5300FCD59D /* ActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C3F753E41ED65F1200A61470 /* CommandRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F753E31ED65F1200A61470 /* CommandRegistry.swift */; };
 		C3F753E61ED65F2C00A61470 /* CommandRegistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F753E51ED65F2C00A61470 /* CommandRegistryTests.swift */; };
 		C3F754071ED6658A00A61470 /* ArtikoloKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F753FE1ED6658900A61470 /* ArtikoloKit.framework */; };
@@ -44,6 +47,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C3DB0AD71ED66E5300FCD59D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3F7D84E1EB68AAD00A85568 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3DB0ACF1ED66E5300FCD59D;
+			remoteInfo = ActionExtension;
+		};
 		C3F754081ED6658A00A61470 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C3F7D84E1EB68AAD00A85568 /* Project object */;
@@ -82,6 +92,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		C3DB0ADD1ED66E5300FCD59D /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C3DB0AD91ED66E5300FCD59D /* ActionExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C3F753F81ED6657800A61470 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -106,6 +127,11 @@
 		C363B3A11EB6AC7F00F7E98F /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		C363B3A31EB6AE4B00F7E98F /* ArticleListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListCoordinator.swift; sourceTree = "<group>"; };
 		C3DB0ACB1ED66C9B00FCD59D /* Artikolo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Artikolo.entitlements; sourceTree = "<group>"; };
+		C3DB0AD01ED66E5300FCD59D /* ActionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ActionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3DB0AD21ED66E5300FCD59D /* ActionRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRequestHandler.swift; sourceTree = "<group>"; };
+		C3DB0AD41ED66E5300FCD59D /* Action.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Action.js; sourceTree = "<group>"; };
+		C3DB0AD61ED66E5300FCD59D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3DB0ADE1ED66E5B00FCD59D /* ActionExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ActionExtension.entitlements; sourceTree = "<group>"; };
 		C3F753D61ED655FC00A61470 /* AutoEquatable.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AutoEquatable.stencil; path = ../../Sourcery/Templates/AutoEquatable.stencil; sourceTree = "<group>"; };
 		C3F753D81ED6561200A61470 /* SourceryTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceryTypes.swift; sourceTree = "<group>"; };
 		C3F753DD1ED657A400A61470 /* CoreDataBacked.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CoreDataBacked.stencil; path = ../../Sourcery/Templates/CoreDataBacked.stencil; sourceTree = "<group>"; };
@@ -144,6 +170,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C3DB0ACD1ED66E5300FCD59D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C3F753FA1ED6658900A61470 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -191,6 +224,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C3DB0AD11ED66E5300FCD59D /* ActionExtension */ = {
+			isa = PBXGroup;
+			children = (
+				C3DB0ADE1ED66E5B00FCD59D /* ActionExtension.entitlements */,
+				C3DB0AD21ED66E5300FCD59D /* ActionRequestHandler.swift */,
+				C3DB0AD41ED66E5300FCD59D /* Action.js */,
+				C3DB0AD61ED66E5300FCD59D /* Info.plist */,
+			);
+			path = ActionExtension;
+			sourceTree = "<group>";
+		};
 		C3F753CF1ED652D400A61470 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +338,7 @@
 				C3F753ED1ED6657800A61470 /* ArtikoloKit */,
 				C3F7540C1ED6658A00A61470 /* ArtikoloKitTests */,
 				C3F753D21ED6530600A61470 /* Templates */,
+				C3DB0AD11ED66E5300FCD59D /* ActionExtension */,
 				C3F7D8571EB68AAD00A85568 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -306,6 +351,7 @@
 				C3F7D8781EB68AAD00A85568 /* ArtikoloUITests.xctest */,
 				C3F753FE1ED6658900A61470 /* ArtikoloKit.framework */,
 				C3F754061ED6658A00A61470 /* ArtikoloKitTests.xctest */,
+				C3DB0AD01ED66E5300FCD59D /* ActionExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -353,6 +399,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		C3DB0ACF1ED66E5300FCD59D /* ActionExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3DB0ADA1ED66E5300FCD59D /* Build configuration list for PBXNativeTarget "ActionExtension" */;
+			buildPhases = (
+				C3DB0ACC1ED66E5300FCD59D /* Sources */,
+				C3DB0ACD1ED66E5300FCD59D /* Frameworks */,
+				C3DB0ACE1ED66E5300FCD59D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ActionExtension;
+			productName = ActionExtension;
+			productReference = C3DB0AD01ED66E5300FCD59D /* ActionExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C3F753FD1ED6658900A61470 /* ArtikoloKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3F754151ED6658A00A61470 /* Build configuration list for PBXNativeTarget "ArtikoloKit" */;
@@ -400,11 +463,13 @@
 				C3F7D8541EB68AAD00A85568 /* Resources */,
 				C3F7D89E1EB6A7E800A85568 /* ShellScript */,
 				C3F753F81ED6657800A61470 /* Embed Frameworks */,
+				C3DB0ADD1ED66E5300FCD59D /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				C3F754121ED6658A00A61470 /* PBXTargetDependency */,
+				C3DB0AD81ED66E5300FCD59D /* PBXTargetDependency */,
 			);
 			name = Artikolo;
 			productName = Artikolo;
@@ -457,6 +522,16 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Grant Butler";
 				TargetAttributes = {
+					C3DB0ACF1ED66E5300FCD59D = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 7PG2EZ6N2N;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					C3F753FD1ED6658900A61470 = {
 						CreatedOnToolsVersion = 8.3.2;
 						ProvisioningStyle = Automatic;
@@ -506,11 +581,20 @@
 				C3F7D8771EB68AAD00A85568 /* ArtikoloUITests */,
 				C3F753FD1ED6658900A61470 /* ArtikoloKit */,
 				C3F754051ED6658A00A61470 /* ArtikoloKitTests */,
+				C3DB0ACF1ED66E5300FCD59D /* ActionExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C3DB0ACE1ED66E5300FCD59D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3DB0AD51ED66E5300FCD59D /* Action.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C3F753FC1ED6658900A61470 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -586,6 +670,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C3DB0ACC1ED66E5300FCD59D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3DB0AD31ED66E5300FCD59D /* ActionRequestHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C3F753F91ED6658900A61470 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -646,6 +738,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C3DB0AD81ED66E5300FCD59D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3DB0ACF1ED66E5300FCD59D /* ActionExtension */;
+			targetProxy = C3DB0AD71ED66E5300FCD59D /* PBXContainerItemProxy */;
+		};
 		C3F754091ED6658A00A61470 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C3F753FD1ED6658900A61470 /* ArtikoloKit */;
@@ -685,6 +782,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C3DB0ADB1ED66E5300FCD59D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = ActionExtension/ActionExtension.entitlements;
+				DEVELOPMENT_TEAM = 7PG2EZ6N2N;
+				INFOPLIST_FILE = ActionExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.grantjbutler.Artikolo.ActionExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		C3DB0ADC1ED66E5300FCD59D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = ActionExtension/ActionExtension.entitlements;
+				DEVELOPMENT_TEAM = 7PG2EZ6N2N;
+				INFOPLIST_FILE = ActionExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.grantjbutler.Artikolo.ActionExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		C3F754161ED6658A00A61470 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -944,6 +1073,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C3DB0ADA1ED66E5300FCD59D /* Build configuration list for PBXNativeTarget "ActionExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3DB0ADB1ED66E5300FCD59D /* Debug */,
+				C3DB0ADC1ED66E5300FCD59D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C3F754151ED6658A00A61470 /* Build configuration list for PBXNativeTarget "ArtikoloKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
