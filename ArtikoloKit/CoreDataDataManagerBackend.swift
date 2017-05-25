@@ -48,7 +48,9 @@ public class CoreDataDataManagerBackend: DataManagerBackend {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = PersistentContainer(name: "Artikolo")
+        guard let managedObjectModelURL = Bundle.init(for: self).url(forResource: "Artikolo", withExtension: "momd") else { fatalError("No URL for the managed object model.") }
+        guard let managedObjectModel = NSManagedObjectModel(contentsOf: managedObjectModelURL) else { fatalError("Unable to load managed object model.") }
+        let container = PersistentContainer(name: "Artikolo", managedObjectModel: managedObjectModel)
         container.persistentStoreDescriptions.forEach { $0.shouldMigrateStoreAutomatically = true }
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             guard let error = error else { return }

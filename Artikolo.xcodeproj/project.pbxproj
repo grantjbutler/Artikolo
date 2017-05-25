@@ -16,8 +16,9 @@
 		C363B3A21EB6AC7F00F7E98F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C363B3A11EB6AC7F00F7E98F /* AppCoordinator.swift */; };
 		C363B3A41EB6AE4B00F7E98F /* ArticleListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C363B3A31EB6AE4B00F7E98F /* ArticleListCoordinator.swift */; };
 		C3DB0AD31ED66E5300FCD59D /* ActionRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB0AD21ED66E5300FCD59D /* ActionRequestHandler.swift */; };
-		C3DB0AD51ED66E5300FCD59D /* Action.js in Resources */ = {isa = PBXBuildFile; fileRef = C3DB0AD41ED66E5300FCD59D /* Action.js */; };
 		C3DB0AD91ED66E5300FCD59D /* ActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C3DB0AD01ED66E5300FCD59D /* ActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C3DB0ADF1ED673D400FCD59D /* ArtikoloKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F753FE1ED6658900A61470 /* ArtikoloKit.framework */; };
+		C3DB0AE21ED674EB00FCD59D /* Artikolo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3DB0AE01ED674EB00FCD59D /* Artikolo.xcdatamodeld */; };
 		C3F753E41ED65F1200A61470 /* CommandRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F753E31ED65F1200A61470 /* CommandRegistry.swift */; };
 		C3F753E61ED65F2C00A61470 /* CommandRegistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F753E51ED65F2C00A61470 /* CommandRegistryTests.swift */; };
 		C3F754071ED6658A00A61470 /* ArtikoloKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F753FE1ED6658900A61470 /* ArtikoloKit.framework */; };
@@ -33,7 +34,6 @@
 		C3F7542C1ED66AAE00A61470 /* AutoEquatable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F7542A1ED66AAE00A61470 /* AutoEquatable.generated.swift */; };
 		C3F7542D1ED66AAE00A61470 /* CoreDataBacked.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F7542B1ED66AAE00A61470 /* CoreDataBacked.generated.swift */; };
 		C3F7D85A1EB68AAD00A85568 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F7D8591EB68AAD00A85568 /* AppDelegate.swift */; };
-		C3F7D8621EB68AAD00A85568 /* Artikolo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3F7D8601EB68AAD00A85568 /* Artikolo.xcdatamodeld */; };
 		C3F7D8641EB68AAD00A85568 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3F7D8631EB68AAD00A85568 /* Assets.xcassets */; };
 		C3F7D8671EB68AAD00A85568 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3F7D8651EB68AAD00A85568 /* LaunchScreen.storyboard */; };
 		C3F7D8911EB69BF800A85568 /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F7D8901EB69BF800A85568 /* ArticleTableViewController.swift */; };
@@ -129,9 +129,9 @@
 		C3DB0ACB1ED66C9B00FCD59D /* Artikolo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Artikolo.entitlements; sourceTree = "<group>"; };
 		C3DB0AD01ED66E5300FCD59D /* ActionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ActionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3DB0AD21ED66E5300FCD59D /* ActionRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRequestHandler.swift; sourceTree = "<group>"; };
-		C3DB0AD41ED66E5300FCD59D /* Action.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Action.js; sourceTree = "<group>"; };
 		C3DB0AD61ED66E5300FCD59D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3DB0ADE1ED66E5B00FCD59D /* ActionExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ActionExtension.entitlements; sourceTree = "<group>"; };
+		C3DB0AE11ED674EB00FCD59D /* Artikolo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Artikolo.xcdatamodel; sourceTree = "<group>"; };
 		C3F753D61ED655FC00A61470 /* AutoEquatable.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AutoEquatable.stencil; path = ../../Sourcery/Templates/AutoEquatable.stencil; sourceTree = "<group>"; };
 		C3F753D81ED6561200A61470 /* SourceryTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceryTypes.swift; sourceTree = "<group>"; };
 		C3F753DD1ED657A400A61470 /* CoreDataBacked.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CoreDataBacked.stencil; path = ../../Sourcery/Templates/CoreDataBacked.stencil; sourceTree = "<group>"; };
@@ -148,7 +148,6 @@
 		C3F7542B1ED66AAE00A61470 /* CoreDataBacked.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataBacked.generated.swift; path = Sourcery/CoreDataBacked.generated.swift; sourceTree = SOURCE_ROOT; };
 		C3F7D8561EB68AAD00A85568 /* Artikolo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Artikolo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F7D8591EB68AAD00A85568 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C3F7D8611EB68AAD00A85568 /* Artikolo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Artikolo.xcdatamodel; sourceTree = "<group>"; };
 		C3F7D8631EB68AAD00A85568 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3F7D8661EB68AAD00A85568 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C3F7D8681EB68AAD00A85568 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -174,6 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3DB0ADF1ED673D400FCD59D /* ArtikoloKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,7 +229,6 @@
 			children = (
 				C3DB0ADE1ED66E5B00FCD59D /* ActionExtension.entitlements */,
 				C3DB0AD21ED66E5300FCD59D /* ActionRequestHandler.swift */,
-				C3DB0AD41ED66E5300FCD59D /* Action.js */,
 				C3DB0AD61ED66E5300FCD59D /* Info.plist */,
 			);
 			path = ActionExtension;
@@ -241,7 +240,6 @@
 				C3F7D8631EB68AAD00A85568 /* Assets.xcassets */,
 				C3F7D8651EB68AAD00A85568 /* LaunchScreen.storyboard */,
 				C3F7D8681EB68AAD00A85568 /* Info.plist */,
-				C3F7D8601EB68AAD00A85568 /* Artikolo.xcdatamodeld */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -307,6 +305,7 @@
 				C3F753DA1ED656FA00A61470 /* Generated */,
 				C3F753EE1ED6657800A61470 /* ArtikoloKit.h */,
 				C3F753EF1ED6657800A61470 /* Info.plist */,
+				C3DB0AE01ED674EB00FCD59D /* Artikolo.xcdatamodeld */,
 				C3F7541C1ED665CB00A61470 /* Frameworks */,
 			);
 			path = ArtikoloKit;
@@ -337,8 +336,8 @@
 				C3F7D87B1EB68AAD00A85568 /* ArtikoloUITests */,
 				C3F753ED1ED6657800A61470 /* ArtikoloKit */,
 				C3F7540C1ED6658A00A61470 /* ArtikoloKitTests */,
-				C3F753D21ED6530600A61470 /* Templates */,
 				C3DB0AD11ED66E5300FCD59D /* ActionExtension */,
+				C3F753D21ED6530600A61470 /* Templates */,
 				C3F7D8571EB68AAD00A85568 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -591,7 +590,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3DB0AD51ED66E5300FCD59D /* Action.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,6 +685,7 @@
 				C3F754201ED6661400A61470 /* Article.swift in Sources */,
 				C3F754221ED6661400A61470 /* CoreDataDataManagerBackend.swift in Sources */,
 				C3F754211ED6661400A61470 /* DataManager.swift in Sources */,
+				C3DB0AE21ED674EB00FCD59D /* Artikolo.xcdatamodeld in Sources */,
 				C3F754251ED666D700A61470 /* SourceryTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -704,7 +703,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C363B3A41EB6AE4B00F7E98F /* ArticleListCoordinator.swift in Sources */,
-				C3F7D8621EB68AAD00A85568 /* Artikolo.xcdatamodeld in Sources */,
 				C3F754281ED666FE00A61470 /* Article+JSON.swift in Sources */,
 				C3F753E41ED65F1200A61470 /* CommandRegistry.swift in Sources */,
 				C363B3A21EB6AC7F00F7E98F /* AppCoordinator.swift in Sources */,
@@ -817,6 +815,7 @@
 		C3F754161ED6658A00A61470 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -839,6 +838,7 @@
 		C3F754171ED6658A00A61470 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1138,12 +1138,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		C3F7D8601EB68AAD00A85568 /* Artikolo.xcdatamodeld */ = {
+		C3DB0AE01ED674EB00FCD59D /* Artikolo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				C3F7D8611EB68AAD00A85568 /* Artikolo.xcdatamodel */,
+				C3DB0AE11ED674EB00FCD59D /* Artikolo.xcdatamodel */,
 			);
-			currentVersion = C3F7D8611EB68AAD00A85568 /* Artikolo.xcdatamodel */;
+			currentVersion = C3DB0AE11ED674EB00FCD59D /* Artikolo.xcdatamodel */;
 			path = Artikolo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -8,39 +8,65 @@
 
 import UIKit
 import MobileCoreServices
+import ArtikoloKit
+
+private let URLUTI = String(kUTTypeURL)
 
 class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
-
+    
+    let dataManager = DataManager(backend: CoreDataDataManagerBackend(containerName: "Artikolo"))
+    
     var extensionContext: NSExtensionContext?
     
     func beginRequest(with context: NSExtensionContext) {
         // Do not call super in an Action extension with no user interface
         self.extensionContext = context
         
-        var found = false
-        
-        // Find the item containing the results from the JavaScript preprocessing.
-        outer:
-            for item in context.inputItems as! [NSExtensionItem] {
-                if let attachments = item.attachments {
-                    for itemProvider in attachments as! [NSItemProvider] {
-                        if itemProvider.hasItemConformingToTypeIdentifier(String(kUTTypePropertyList)) {
-                            itemProvider.loadItem(forTypeIdentifier: String(kUTTypePropertyList), options: nil, completionHandler: { (item, error) in
-                                let dictionary = item as! [String: Any]
-                                OperationQueue.main.addOperation {
-                                    self.itemLoadCompletedWithPreprocessingResults(dictionary[NSExtensionJavaScriptPreprocessingResultsKey] as! [String: Any]? ?? [:])
-                                }
-                            })
-                            found = true
-                            break outer
-                        }
+        for item in context.inputItems as! [NSExtensionItem] {
+            print("item.attributedTitle = \(String(describing: item.attributedTitle))")
+            
+            if let attachments = item.attachments {
+                for itemProvider in attachments as! [NSItemProvider] {
+                    print("found item provider: \(itemProvider)")
+                    
+                    if itemProvider.hasItemConformingToTypeIdentifier(URLUTI) {
+                        itemProvider.loadItem(forTypeIdentifier: URLUTI, options: nil, completionHandler: { (item, error) in
+                            guard let url = item as? URL else { return }
+                            let article = Article(url: url, addedOn: Date(), createdOn: Date())
+                            
+                            self.dataManager.save(article: article)
+                        })
                     }
                 }
+            }
         }
         
-        if !found {
-            self.doneWithResults(nil)
-        }
+        self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+        
+//        var found = false
+//        
+//        // Find the item containing the results from the JavaScript preprocessing.
+//        outer:
+//            for item in context.inputItems as! [NSExtensionItem] {
+//                if let attachments = item.attachments {
+//                    for itemProvider in attachments as! [NSItemProvider] {
+//                        if itemProvider.hasItemConformingToTypeIdentifier(String(kUTTypePropertyList)) {
+//                            itemProvider.loadItem(forTypeIdentifier: String(kUTTypePropertyList), options: nil, completionHandler: { (item, error) in
+//                                let dictionary = item as! [String: Any]
+//                                OperationQueue.main.addOperation {
+//                                    self.itemLoadCompletedWithPreprocessingResults(dictionary[NSExtensionJavaScriptPreprocessingResultsKey] as! [String: Any]? ?? [:])
+//                                }
+//                            })
+//                            found = true
+//                            break outer
+//                        }
+//                    }
+//                }
+//        }
+//        
+//        if !found {
+//            self.doneWithResults(nil)
+//        }
     }
     
     func itemLoadCompletedWithPreprocessingResults(_ javaScriptPreprocessingResults: [String: Any]) {
