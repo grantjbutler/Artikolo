@@ -10,6 +10,7 @@ import Foundation
 
 struct Article {
     
+    // sourcery: coreDataIdentifier
     let url: URL
     
     // sourcery: skipEquality
@@ -21,6 +22,7 @@ struct Article {
 }
 
 extension Article: AutoEquatable {}
+extension Article: CoreDataBacked {}
 
 extension Article {
     

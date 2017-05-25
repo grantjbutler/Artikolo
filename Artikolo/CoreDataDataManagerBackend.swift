@@ -62,32 +62,22 @@ class CoreDataDataManagerBackend: DataManagerBackend {
         container = type(of: self).makePersistentContainer(name: containerName)
         container.viewContext.automaticallyMergesChangesFromParent = true
         
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Article")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Article.entityName)
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "addedOn", ascending: false)
         ]
         
         articles = container.viewContext.rx.entities(fetchRequest: fetchRequest)
                 .map {
-                    $0.map {
-                        let url = $0.value(forKey: "url") as! URL
-                        let addedOn = $0.value(forKey: "addedOn") as! Date
-                        let createdOn = $0.value(forKey: "createdOn") as! Date
-                        
-                        return Article(url: url, addedOn: addedOn, createdOn: createdOn)
-                    }
+                    $0.map { return try! Article(managedObject: $0) }
                 }
     }
     
     func save(article: Article) {
         let context = container.newBackgroundContext()
         context.performAndWait {
-            let articleObject = NSEntityDescription.insertNewObject(forEntityName: "Article", into: context)
-            articleObject.setValue(article.url, forKey: "url")
-            articleObject.setValue(article.addedOn, forKey: "addedOn")
-            articleObject.setValue(article.createdOn, forKey: "createdOn")
-            
             do {
+                let _ = try article.toManagedObject(in: context)
                 try context.save()
             }
             catch {

@@ -9,3 +9,5 @@
 import Foundation
 
 protocol AutoEquatable {}
+
+protocol CoreDataBacked {}

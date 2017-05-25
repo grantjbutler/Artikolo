@@ -1,0 +1,53 @@
+import CoreData
+
+enum CoreDataInitializationError: Error {
+
+    case invalidProperty(String)
+
+}
+
+// MARK: - CoreDataInitializable for classes, protocols, structs
+{% for type in types.implementing.CoreDataBacked|!enum %}
+extension {{ type.name }} {
+
+    static var entityName: String {
+        return "{{ type.name }}"
+    }
+
+    init(managedObject: NSManagedObject) throws {
+        {% for variable in type.storedVariables %}
+        {% if variable.isOptional %}
+        let {{ variable.name }} = managedObject.value(forKey: "{{ variable.name }}") as? {{ variable.typeName }}
+        {% else %}
+        guard let {{ variable.name }} = managedObject.value(forKey: "{{ variable.name }}") as? {{ variable.typeName }} else { throw CoreDataInitializationError.invalidProperty("{{ variable.name }}") }
+        {% endif %}
+        {% endfor %}
+
+        {% for variable in type.storedVariables %}
+        self.{{ variable.name }} = {{ variable.name }}
+        {% endfor %}
+    }
+
+    func toManagedObject(in context: NSManagedObjectContext) throws -> NSManagedObject {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: type(of: self).entityName)
+        fetchRequest.fetchLimit = 1
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            {% for variable in type.storedVariables %}
+            {% if variable.annotations.coreDataIdentifier %}
+            NSPredicate(format: "%K == %@", argumentArray: ["{{ variable.name }}", {{ variable.name }}]),
+            {% endif %}
+            {% endfor %}
+        ])
+
+        let results = try context.fetch(fetchRequest)
+        let managedObject = results.first ?? NSEntityDescription.insertNewObject(forEntityName: type(of: self).entityName, into: context)
+
+        {% for variable in type.storedVariables %}
+        managedObject.setValue({{ variable.name }}, forKey: "{{ variable.name }}")
+        {% endfor %}
+
+        return managedObject
+    }
+
+}
+{% endfor %}

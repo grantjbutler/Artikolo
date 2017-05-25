@@ -19,6 +19,8 @@
 		C3F753D71ED655FC00A61470 /* AutoEquatable.stencil in Resources */ = {isa = PBXBuildFile; fileRef = C3F753D61ED655FC00A61470 /* AutoEquatable.stencil */; };
 		C3F753D91ED6561200A61470 /* SourceryTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F753D81ED6561200A61470 /* SourceryTypes.swift */; };
 		C3F753DC1ED6570600A61470 /* AutoEquatable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F753DB1ED6570600A61470 /* AutoEquatable.generated.swift */; };
+		C3F753DE1ED657A400A61470 /* CoreDataBacked.stencil in Resources */ = {isa = PBXBuildFile; fileRef = C3F753DD1ED657A400A61470 /* CoreDataBacked.stencil */; };
+		C3F753E21ED65DAD00A61470 /* CoreDataBacked.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F753E11ED65DAD00A61470 /* CoreDataBacked.generated.swift */; };
 		C3F7D85A1EB68AAD00A85568 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F7D8591EB68AAD00A85568 /* AppDelegate.swift */; };
 		C3F7D8621EB68AAD00A85568 /* Artikolo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3F7D8601EB68AAD00A85568 /* Artikolo.xcdatamodeld */; };
 		C3F7D8641EB68AAD00A85568 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3F7D8631EB68AAD00A85568 /* Assets.xcassets */; };
@@ -66,6 +68,8 @@
 		C3F753D61ED655FC00A61470 /* AutoEquatable.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AutoEquatable.stencil; sourceTree = "<group>"; };
 		C3F753D81ED6561200A61470 /* SourceryTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceryTypes.swift; sourceTree = "<group>"; };
 		C3F753DB1ED6570600A61470 /* AutoEquatable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoEquatable.generated.swift; sourceTree = "<group>"; };
+		C3F753DD1ED657A400A61470 /* CoreDataBacked.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CoreDataBacked.stencil; sourceTree = "<group>"; };
+		C3F753E11ED65DAD00A61470 /* CoreDataBacked.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataBacked.generated.swift; sourceTree = "<group>"; };
 		C3F7D8561EB68AAD00A85568 /* Artikolo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Artikolo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F7D8591EB68AAD00A85568 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3F7D8611EB68AAD00A85568 /* Artikolo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Artikolo.xcdatamodel; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 		C3F753D21ED6530600A61470 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
+				C3F753DD1ED657A400A61470 /* CoreDataBacked.stencil */,
 				C3F753D61ED655FC00A61470 /* AutoEquatable.stencil */,
 			);
 			path = Templates;
@@ -178,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				C3F753DB1ED6570600A61470 /* AutoEquatable.generated.swift */,
+				C3F753E11ED65DAD00A61470 /* CoreDataBacked.generated.swift */,
 			);
 			name = Generated;
 			sourceTree = "<group>";
@@ -343,6 +349,7 @@
 				C3F753D71ED655FC00A61470 /* AutoEquatable.stencil in Resources */,
 				C3F7D8671EB68AAD00A85568 /* LaunchScreen.storyboard in Resources */,
 				C3F7D8641EB68AAD00A85568 /* Assets.xcassets in Resources */,
+				C3F753DE1ED657A400A61470 /* CoreDataBacked.stencil in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +412,7 @@
 				C3F753DC1ED6570600A61470 /* AutoEquatable.generated.swift in Sources */,
 				C363B3A41EB6AE4B00F7E98F /* ArticleListCoordinator.swift in Sources */,
 				C3F7D88D1EB690C100A85568 /* DataManager.swift in Sources */,
+				C3F753E21ED65DAD00A61470 /* CoreDataBacked.generated.swift in Sources */,
 				C3F7D88F1EB694FD00A85568 /* CoreDataDataManagerBackend.swift in Sources */,
 				C3F7D8621EB68AAD00A85568 /* Artikolo.xcdatamodeld in Sources */,
 				C3334DB31EC7A144000B6C4E /* Article.swift in Sources */,
