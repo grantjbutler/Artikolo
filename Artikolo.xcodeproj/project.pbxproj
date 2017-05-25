@@ -105,6 +105,7 @@
 		C363B39F1EB6AC1300F7E98F /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C363B3A11EB6AC7F00F7E98F /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		C363B3A31EB6AE4B00F7E98F /* ArticleListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListCoordinator.swift; sourceTree = "<group>"; };
+		C3DB0ACB1ED66C9B00FCD59D /* Artikolo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Artikolo.entitlements; sourceTree = "<group>"; };
 		C3F753D61ED655FC00A61470 /* AutoEquatable.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AutoEquatable.stencil; path = ../../Sourcery/Templates/AutoEquatable.stencil; sourceTree = "<group>"; };
 		C3F753D81ED6561200A61470 /* SourceryTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceryTypes.swift; sourceTree = "<group>"; };
 		C3F753DD1ED657A400A61470 /* CoreDataBacked.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CoreDataBacked.stencil; path = ../../Sourcery/Templates/CoreDataBacked.stencil; sourceTree = "<group>"; };
@@ -312,6 +313,7 @@
 		C3F7D8581EB68AAD00A85568 /* Artikolo */ = {
 			isa = PBXGroup;
 			children = (
+				C3DB0ACB1ED66C9B00FCD59D /* Artikolo.entitlements */,
 				C3F753D11ED652EB00A61470 /* Source Code */,
 				C3F753CF1ED652D400A61470 /* Resources */,
 				C3F753D01ED652E400A61470 /* Frameworks */,
@@ -466,7 +468,13 @@
 					};
 					C3F7D8551EB68AAD00A85568 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 7PG2EZ6N2N;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					C3F7D86C1EB68AAD00A85568 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -852,6 +860,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Artikolo/Artikolo.entitlements;
+				DEVELOPMENT_TEAM = 7PG2EZ6N2N;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Artikolo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -866,6 +876,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Artikolo/Artikolo.entitlements;
+				DEVELOPMENT_TEAM = 7PG2EZ6N2N;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Artikolo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -939,6 +951,7 @@
 				C3F754171ED6658A00A61470 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C3F754181ED6658A00A61470 /* Build configuration list for PBXNativeTarget "ArtikoloKitTests" */ = {
 			isa = XCConfigurationList;
@@ -947,6 +960,7 @@
 				C3F7541A1ED6658A00A61470 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C3F7D8511EB68AAD00A85568 /* Build configuration list for PBXProject "Artikolo" */ = {
 			isa = XCConfigurationList;
