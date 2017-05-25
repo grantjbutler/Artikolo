@@ -21,6 +21,8 @@
 		C3F753DC1ED6570600A61470 /* AutoEquatable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F753DB1ED6570600A61470 /* AutoEquatable.generated.swift */; };
 		C3F753DE1ED657A400A61470 /* CoreDataBacked.stencil in Resources */ = {isa = PBXBuildFile; fileRef = C3F753DD1ED657A400A61470 /* CoreDataBacked.stencil */; };
 		C3F753E21ED65DAD00A61470 /* CoreDataBacked.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F753E11ED65DAD00A61470 /* CoreDataBacked.generated.swift */; };
+		C3F753E41ED65F1200A61470 /* CommandRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F753E31ED65F1200A61470 /* CommandRegistry.swift */; };
+		C3F753E61ED65F2C00A61470 /* CommandRegistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F753E51ED65F2C00A61470 /* CommandRegistryTests.swift */; };
 		C3F7D85A1EB68AAD00A85568 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F7D8591EB68AAD00A85568 /* AppDelegate.swift */; };
 		C3F7D8621EB68AAD00A85568 /* Artikolo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3F7D8601EB68AAD00A85568 /* Artikolo.xcdatamodeld */; };
 		C3F7D8641EB68AAD00A85568 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3F7D8631EB68AAD00A85568 /* Assets.xcassets */; };
@@ -70,6 +72,8 @@
 		C3F753DB1ED6570600A61470 /* AutoEquatable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoEquatable.generated.swift; sourceTree = "<group>"; };
 		C3F753DD1ED657A400A61470 /* CoreDataBacked.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CoreDataBacked.stencil; sourceTree = "<group>"; };
 		C3F753E11ED65DAD00A61470 /* CoreDataBacked.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataBacked.generated.swift; sourceTree = "<group>"; };
+		C3F753E31ED65F1200A61470 /* CommandRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandRegistry.swift; sourceTree = "<group>"; };
+		C3F753E51ED65F2C00A61470 /* CommandRegistryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandRegistryTests.swift; sourceTree = "<group>"; };
 		C3F7D8561EB68AAD00A85568 /* Artikolo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Artikolo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F7D8591EB68AAD00A85568 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3F7D8611EB68AAD00A85568 /* Artikolo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Artikolo.xcdatamodel; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				C3F998D91EB80601000081F8 /* UITableViewCell+TypeSafety.swift */,
 				C3334DBC1EC7CB17000B6C4E /* JSONError.swift */,
 				C3F753D81ED6561200A61470 /* SourceryTypes.swift */,
+				C3F753E31ED65F1200A61470 /* CommandRegistry.swift */,
 				C3F753DA1ED656FA00A61470 /* Generated */,
 				C3F753D21ED6530600A61470 /* Templates */,
 			);
@@ -222,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				C3F7D88A1EB68F1500A85568 /* DataManagerTests.swift */,
+				C3F753E51ED65F2C00A61470 /* CommandRegistryTests.swift */,
 				C3F7D8731EB68AAD00A85568 /* Info.plist */,
 			);
 			path = ArtikoloTests;
@@ -415,6 +421,7 @@
 				C3F753E21ED65DAD00A61470 /* CoreDataBacked.generated.swift in Sources */,
 				C3F7D88F1EB694FD00A85568 /* CoreDataDataManagerBackend.swift in Sources */,
 				C3F7D8621EB68AAD00A85568 /* Artikolo.xcdatamodeld in Sources */,
+				C3F753E41ED65F1200A61470 /* CommandRegistry.swift in Sources */,
 				C3334DB31EC7A144000B6C4E /* Article.swift in Sources */,
 				C363B3A21EB6AC7F00F7E98F /* AppCoordinator.swift in Sources */,
 				C3334DBB1EC7B488000B6C4E /* ArticleBrowserCoordinator.swift in Sources */,
@@ -432,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3F753E61ED65F2C00A61470 /* CommandRegistryTests.swift in Sources */,
 				C3F7D88B1EB68F1500A85568 /* DataManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
