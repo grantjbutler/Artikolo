@@ -29,7 +29,7 @@ class DataManagerTests: XCTestCase {
     }
     
     func testURLCanBeSaved() {
-        let article = Article(url: URL(string: "http://zeldathon.net/")!)
+        let article = Article(url: URL(string: "http://zeldathon.net/")!, addedOn: Date(), createdOn: Date())
         
         var articles: [Article] = []
         
@@ -44,7 +44,7 @@ class DataManagerTests: XCTestCase {
     }
     
     func testDataManagerIsReset() {
-        let article = Article(url: URL(string: "http://zeldathon.net/")!)
+        let article = Article(url: URL(string: "http://zeldathon.net/")!, addedOn: Date(), createdOn: Date())
         
         var articles: [Article] = []
         
