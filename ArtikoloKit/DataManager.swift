@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-protocol DataManagerBackend {
+public protocol DataManagerBackend {
     
     var articles: Observable<[Article]> { get }
     
@@ -18,23 +18,23 @@ protocol DataManagerBackend {
     
 }
 
-class DataManager {
+public class DataManager {
     
-    let backend: DataManagerBackend
+    public let backend: DataManagerBackend
     
-    var articles: Observable<[Article]> {
+    public var articles: Observable<[Article]> {
         return backend.articles
     }
     
-    init(backend: DataManagerBackend) {
+    public init(backend: DataManagerBackend) {
         self.backend = backend
     }
     
-    func save(article: Article) {
+    public func save(article: Article) {
         backend.save(article: article)
     }
     
-    func reset() throws {
+    public func reset() throws {
         try backend.reset()
     }
     

@@ -23,11 +23,11 @@ private extension NSPersistentContainer {
     
 }
 
-class CoreDataDataManagerBackend: DataManagerBackend {
+public class CoreDataDataManagerBackend: DataManagerBackend {
     
     private let container: NSPersistentContainer
     
-    let articles: Observable<[Article]>
+    public let articles: Observable<[Article]>
     
     private static func makePersistentContainer(name: String) -> NSPersistentContainer {
         /*
@@ -58,7 +58,7 @@ class CoreDataDataManagerBackend: DataManagerBackend {
         return container
     }
     
-    init(containerName: String) {
+    public init(containerName: String) {
         container = type(of: self).makePersistentContainer(name: containerName)
         container.viewContext.automaticallyMergesChangesFromParent = true
         
@@ -73,7 +73,7 @@ class CoreDataDataManagerBackend: DataManagerBackend {
                 }
     }
     
-    func save(article: Article) {
+    public func save(article: Article) {
         let context = container.newBackgroundContext()
         context.performAndWait {
             do {
@@ -89,7 +89,7 @@ class CoreDataDataManagerBackend: DataManagerBackend {
         }
     }
     
-    func reset() throws {
+    public func reset() throws {
         let coordinator = container.persistentStoreCoordinator
         let stores = coordinator.persistentStores
         try stores.forEach({ (store) in

@@ -8,6 +8,7 @@
 
 import UIKit
 import Dip
+import ArtikoloKit
 
 private enum Command {
     

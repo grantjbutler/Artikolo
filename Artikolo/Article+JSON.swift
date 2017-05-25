@@ -1,28 +1,13 @@
 //
-//  Article.swift
+//  Article+JSON.swift
 //  Artikolo
 //
-//  Created by Grant Butler on 5/13/17.
+//  Created by Grant Butler on 5/24/17.
 //  Copyright © 2017 Grant Butler. All rights reserved.
 //
 
 import Foundation
-
-struct Article {
-    
-    // sourcery: coreDataIdentifier
-    let url: URL
-    
-    // sourcery: skipEquality
-    let addedOn: Date
-    
-    // sourcery: skipEquality
-    let createdOn: Date
-    
-}
-
-extension Article: AutoEquatable {}
-extension Article: CoreDataBacked {}
+import ArtikoloKit
 
 extension Article {
     

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Artikolo
+@testable import ArtikoloKit
 import RxSwift
 
 class DataManagerTests: XCTestCase {

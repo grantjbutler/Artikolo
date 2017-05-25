@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import ArtikoloKit
 
 private var titleContext = 0
 

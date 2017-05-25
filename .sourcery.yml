@@ -1,7 +1,10 @@
-sources:
- - Artikolo/
+project:
+ file: Artikolo.xcodeproj
+ root: .
+ target:
+  - name: Artikolo
+  - name: ArtikoloKit
 templates:
- - Artikolo/Templates/
+ - Sourcery/Templates/
 output:
- Artikolo/
-
+ Sourcery/

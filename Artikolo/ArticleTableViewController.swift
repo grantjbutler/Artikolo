@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxDataSources
 import RxCocoa
+import ArtikoloKit
 
 class ArticleTableViewController: UITableViewController {
     
