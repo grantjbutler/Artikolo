@@ -1,0 +1,7 @@
+sources:
+ - Artikolo/
+templates:
+ - Artikolo/Templates/
+output:
+ Artikolo/
+

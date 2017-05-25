@@ -11,18 +11,16 @@ import Foundation
 struct Article {
     
     let url: URL
+    
+    // sourcery: skipEquality
     let addedOn: Date
+    
+    // sourcery: skipEquality
     let createdOn: Date
     
 }
 
-extension Article: Equatable {
-    
-    public static func ==(lhs: Article, rhs: Article) -> Bool {
-        return lhs.url == rhs.url
-    }
-    
-}
+extension Article: AutoEquatable {}
 
 extension Article {
     
