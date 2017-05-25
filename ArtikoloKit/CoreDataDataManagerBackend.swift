@@ -11,6 +11,18 @@ import CoreData
 import RxSwift
 import RxCoreData
 
+private let AppGroupIdentifier = "group.com.grantjbutler.Artikolo.Database"
+private class PersistentContainer: NSPersistentContainer {
+    
+    override class func defaultDirectoryURL() -> URL {
+        guard let directoryURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: AppGroupIdentifier) else {
+            fatalError("No application group with the identifier \(AppGroupIdentifier)")
+        }
+        return directoryURL
+    }
+    
+}
+
 private extension NSPersistentContainer {
     
     func removeStores() throws {
@@ -36,7 +48,7 @@ public class CoreDataDataManagerBackend: DataManagerBackend {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "Artikolo")
+        let container = PersistentContainer(name: "Artikolo")
         container.persistentStoreDescriptions.forEach { $0.shouldMigrateStoreAutomatically = true }
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             guard let error = error else { return }
