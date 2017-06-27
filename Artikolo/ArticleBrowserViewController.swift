@@ -48,7 +48,7 @@ class ArticleBrowserViewController: UIViewController {
     }
     
     deinit {
-        webView.removeObserver(self, forKeyPath: #keyPath(WKWebView.title))
+        webView.removeObserver(self, forKeyPath: #keyPath(WKWebView.displayTitle))
     }
     
     required init?(coder aDecoder: NSCoder) {
