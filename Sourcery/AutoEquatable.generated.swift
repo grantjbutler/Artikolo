@@ -1,4 +1,4 @@
-// Generated using Sourcery 0.6.0 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 0.7.2 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
 // swiftlint:disable file_length
@@ -28,6 +28,13 @@ fileprivate func compareArrays<T>(lhs: [T], rhs: [T], compare: (_ lhs: T, _ rhs:
 extension Article: Equatable {}
 public func == (lhs: Article, rhs: Article) -> Bool {
     guard lhs.url == rhs.url else { return false }
+    return true
+}
+// MARK: - Tag AutoEquatable
+extension Tag: Equatable {}
+public func == (lhs: Tag, rhs: Tag) -> Bool {
+    guard lhs.name == rhs.name else { return false }
+    guard lhs.color == rhs.color else { return false }
     return true
 }
 

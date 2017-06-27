@@ -32,7 +32,7 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
                     if itemProvider.hasItemConformingToTypeIdentifier(URLUTI) {
                         itemProvider.loadItem(forTypeIdentifier: URLUTI, options: nil, completionHandler: { (item, error) in
                             guard let url = item as? URL else { return }
-                            let article = Article(url: url, addedOn: Date(), createdOn: Date())
+                            let article = Article(url: url, addedOn: Date(), createdOn: Date(), tags: [])
                             
                             self.dataManager.save(article: article)
                         })

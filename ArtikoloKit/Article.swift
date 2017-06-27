@@ -19,10 +19,15 @@ public struct Article {
     // sourcery: skipEquality
     public let createdOn: Date
     
-    public init(url: URL, addedOn: Date, createdOn: Date) {
+    // sourcery: skipEquality
+    // sourcery: coreDataRelationship
+    public let tags: [Tag]
+    
+    public init(url: URL, addedOn: Date, createdOn: Date, tags: [Tag]) {
         self.url = url
         self.addedOn = addedOn
         self.createdOn = createdOn
+        self.tags = tags
     }
 }
 

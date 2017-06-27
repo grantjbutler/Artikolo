@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Article" representedClassName="" syncable="YES">
         <attribute name="addedOn" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="createdOn" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="url" attributeType="Transformable" valueTransformerName="" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="articles" inverseEntity="Tag" syncable="YES"/>
         <compoundIndexes>
             <compoundIndex>
                 <index value="url"/>
@@ -15,7 +16,13 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES">
+        <attribute name="color" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="articles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Article" inverseName="tags" inverseEntity="Article" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Article" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Article" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Tag" positionX="-63" positionY="9" width="128" height="90"/>
     </elements>
 </model>

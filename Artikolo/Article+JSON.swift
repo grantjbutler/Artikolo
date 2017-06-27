@@ -15,7 +15,7 @@ extension Article {
         guard let urlString = JSON["url"] as? String else { throw JSONError.invalidValue(keypath: "url") }
         guard let url = URL(string: urlString) else { throw JSONError.incorrectType(keyPath: "url") }
         
-        return Article(url: url, addedOn: Date(), createdOn: Date())
+        return Article(url: url, addedOn: Date(), createdOn: Date(), tags: [])
     }
     
 }

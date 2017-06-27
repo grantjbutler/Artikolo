@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C311E64E1F01ED7600D97896 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C311E64D1F01ED7600D97896 /* Tag.swift */; };
 		C3334DB51EC7A3E3000B6C4E /* AddArticleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3334DB41EC7A3E3000B6C4E /* AddArticleUITests.swift */; };
 		C3334DB71EC7AD48000B6C4E /* ViewArticleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3334DB61EC7AD48000B6C4E /* ViewArticleUITests.swift */; };
 		C3334DB91EC7B37B000B6C4E /* ArticleBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3334DB81EC7B37B000B6C4E /* ArticleBrowserViewController.swift */; };
@@ -117,6 +118,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C311E64D1F01ED7600D97896 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		C3334DB21EC7A144000B6C4E /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		C3334DB41EC7A3E3000B6C4E /* AddArticleUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddArticleUITests.swift; sourceTree = "<group>"; };
 		C3334DB61EC7AD48000B6C4E /* ViewArticleUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewArticleUITests.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				C3334DB21EC7A144000B6C4E /* Article.swift */,
+				C311E64D1F01ED7600D97896 /* Tag.swift */,
 				C3F7D88C1EB690C100A85568 /* DataManager.swift */,
 				C3F7D88E1EB694FD00A85568 /* CoreDataDataManagerBackend.swift */,
 				C3F753D81ED6561200A61470 /* SourceryTypes.swift */,
@@ -644,7 +647,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = sourcery;
+			shellScript = "sourcery --verbose";
 		};
 		C3F7D89E1EB6A7E800A85568 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -680,6 +683,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C311E64E1F01ED7600D97896 /* Tag.swift in Sources */,
 				C3F7542C1ED66AAE00A61470 /* AutoEquatable.generated.swift in Sources */,
 				C3F7542D1ED66AAE00A61470 /* CoreDataBacked.generated.swift in Sources */,
 				C3F754201ED6661400A61470 /* Article.swift in Sources */,
@@ -1080,6 +1084,7 @@
 				C3DB0ADC1ED66E5300FCD59D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C3F754151ED6658A00A61470 /* Build configuration list for PBXNativeTarget "ArtikoloKit" */ = {
 			isa = XCConfigurationList;
