@@ -1,4 +1,5 @@
 import CoreData
+import UIKit
 
 enum CoreDataInitializationError: Error {
 
@@ -16,10 +17,20 @@ extension {{ type.name }} {
 
     init(managedObject: NSManagedObject) throws {
         {% for variable in type.storedVariables %}
+        {% if variable.annotations.coreDataRelationship %}
+        {% if variable.isArray %}
+        guard let {{ variable.name }}ManagedObjects = managedObject.value(forKey: "{{ variable.name }}") as? [NSManagedObject] else { throw CoreDataInitializationError.invalidProperty("{{ variable.name }}") }
+        let {{ variable.name }} = try {{ variable.name }}ManagedObjects.map { try {{ variable.typeName.array.elementTypeName }}(managedObject: $0) }
+        {% else %}
+        guard let {{ variable.name}}ManagedObject = managedObject.value(forKey: "{{ variable.name }}") as? NSManagedObject else { throw CoreDataInitializationError.invalidProperty("{{ variable.name }}") }
+        let {{ variable.name }} = {{ variable.typeName }}(managedObject: {{ variable.name}}ManagedObject)
+        {% endif %}
+        {% else %}
         {% if variable.isOptional %}
         let {{ variable.name }} = managedObject.value(forKey: "{{ variable.name }}") as? {{ variable.typeName }}
         {% else %}
         guard let {{ variable.name }} = managedObject.value(forKey: "{{ variable.name }}") as? {{ variable.typeName }} else { throw CoreDataInitializationError.invalidProperty("{{ variable.name }}") }
+        {% endif %}
         {% endif %}
         {% endfor %}
 
@@ -43,7 +54,16 @@ extension {{ type.name }} {
         let managedObject = results.first ?? NSEntityDescription.insertNewObject(forEntityName: type(of: self).entityName, into: context)
 
         {% for variable in type.storedVariables %}
+        {% if variable.annotations.coreDataRelationship %}
+        {% if variable.isArray %}
+        let {{ variable.name}}ManagedObjects = try {{ variable.name }}.map { try $0.toManagedObject(in: context) }
+        managedObject.setValue({{ variable.name}}ManagedObjects, forKey: "{{ variable.name }}")
+        {% else %}
+
+        {% endif %}
+        {% else %}
         managedObject.setValue({{ variable.name }}, forKey: "{{ variable.name }}")
+        {% endif %}
         {% endfor %}
 
         return managedObject
