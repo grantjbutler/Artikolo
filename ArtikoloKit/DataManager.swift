@@ -12,6 +12,7 @@ import RxSwift
 public protocol DataManagerBackend {
     
     var articles: Observable<[Article]> { get }
+    var tags: Observable<[Tag]> { get }
     
     func save(article: Article)
     func reset() throws
@@ -24,6 +25,10 @@ public class DataManager {
     
     public var articles: Observable<[Article]> {
         return backend.articles
+    }
+    
+    public var tags: Observable<[Tag]> {
+        return backend.tags
     }
     
     public init(backend: DataManagerBackend) {

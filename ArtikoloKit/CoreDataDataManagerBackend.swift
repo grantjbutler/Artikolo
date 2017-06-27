@@ -40,6 +40,7 @@ public class CoreDataDataManagerBackend: DataManagerBackend {
     private let container: NSPersistentContainer
     
     public let articles: Observable<[Article]>
+    public let tags: Observable<[Tag]>
     
     private static func makePersistentContainer(name: String) -> NSPersistentContainer {
         /*
@@ -76,15 +77,24 @@ public class CoreDataDataManagerBackend: DataManagerBackend {
         container = type(of: self).makePersistentContainer(name: containerName)
         container.viewContext.automaticallyMergesChangesFromParent = true
         
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Article.entityName)
-        fetchRequest.sortDescriptors = [
+        let articleFetchRequest = NSFetchRequest<NSManagedObject>(entityName: Article.entityName)
+        articleFetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "addedOn", ascending: false)
         ]
         
-        articles = container.viewContext.rx.entities(fetchRequest: fetchRequest)
+        articles = container.viewContext.rx.entities(fetchRequest: articleFetchRequest)
                 .map {
                     $0.map { return try! Article(managedObject: $0) }
                 }
+        
+        let tagFetchRequest = NSFetchRequest<NSManagedObject>(entityName: Tag.entityName)
+        tagFetchRequest.sortDescriptors = [
+            NSSortDescriptor(key: "name", ascending: true)
+        ]
+        tags = container.viewContext.rx.entities(fetchRequest: tagFetchRequest)
+            .map {
+                $0.map { return try! Tag(managedObject: $0) }
+            }
     }
     
     public func save(article: Article) {
